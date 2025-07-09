@@ -3,7 +3,7 @@ altair
 matplotlib
 numpy
 vega_datasets
-jupyter-book
+jupyter-book==2.0.0
 pandas
 
 # To interactively browser Jupyter content with MyST
