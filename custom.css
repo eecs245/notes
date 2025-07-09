@@ -1,0 +1,27 @@
+/* Edward Tufte's font styles */
+body {
+    font-family: 'Avenir', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Avenir', serif;
+}
+
+/* Remove navigation buttons */
+footer {
+    display: none !important;
+}
+
+/* Remove navigation buttons from content pages */
+.content-container {
+    padding-bottom: 0 !important;
+}
+
+/* Remove navigation buttons from sidebar */
+.sidebar {
+    padding-bottom: 0 !important;
+}
+
+.myst-footer {
+    display: none;
+}
