@@ -2,15 +2,52 @@
 version: 1
 project:
   id: d2c12083-8095-432e-b7b0-07c9d956add7
-  title: Math for Machine Learning
+  title: "EECS 245 Course Notes"
   description: Course notes for EECS 245 at the University of Michigan.
-  # keywords: []
-  # authors: [""]
-  authors:
-    - name: EECS 245
-      affiliations:
-        - University of Michigan
-  github: https://github.com/eecs245/notes
+  github: eecs245/notes
+  toc:
+    - file: index.md
+    - title: "Part 1: Introduction to Supervised Learning"
+      children:
+        - file: 01-supervised-learning/01-intro.ipynb
+        - file: 01-supervised-learning/02-loss-functions-constant-model.ipynb
+        - file: 01-supervised-learning/03-empirical-risk-minimization.ipynb
+        - file: 01-supervised-learning/04-simple-linear-regression.ipynb
+        - file: 01-supervised-learning/05-towards-multiple-regression.ipynb
+    - title: "Part 2: Vectors and Matrices"
+      children:
+        - file: 02-vectors-and-matrices/01-intro-vectors.ipynb
+        - file: 02-vectors-and-matrices/02-dot-product.ipynb
+        - file: 02-vectors-and-matrices/03-linear-independence.ipynb
+        - file: 02-vectors-and-matrices/04-projection-1.ipynb
+        - file: 02-vectors-and-matrices/05-matrices.ipynb
+        - file: 02-vectors-and-matrices/06-linear-transformations.ipynb
+        - file: 02-vectors-and-matrices/07-vector-spaces.ipynb
+        - file: 02-vectors-and-matrices/08-projection-2.ipynb
+    - title: "Part 3: Regression using Linear Algebra"
+      children:
+        - file: 03-multiple-linear-regression/01-from-scalars-to-vectors.ipynb
+        - file: 03-multiple-linear-regression/02-incorporating-multiple-features.ipynb
+        - file: 03-multiple-linear-regression/03-overfitting.ipynb
+    - title: "Part 4: Gradients"
+      children:
+        - file: 04-gradients/01-gradient-vector.ipynb
+        - file: 04-gradients/02-least-squares-revisited.ipynb
+        - file: 04-gradients/03-convexity.ipynb
+        - file: 04-gradients/04-gradient-descent.ipynb
+    - title: "Part 5: Eigenvalues and Eigenvectors"
+      children:
+        - file: 05-eigenvalues/01-intro.ipynb
+        - file: 05-eigenvalues/02-eigendecomposition.ipynb
+        - file: 05-eigenvalues/03-singular-value-decomposition.ipynb
+        - file: 05-eigenvalues/04-principal-components-analysis.ipynb
+    - title: "Part 6: Probability"
+      children:
+        - file: 06-probability/01-intro-random-variables.ipynb
+        - file: 06-probability/02-continuous-distributions.ipynb
+        - file: 06-probability/03-independence.ipynb
+        - file: 06-probability/04-maximum-likelihood-estimation.ipynb
+        - file: 06-probability/05-least-squares-revisited-again.ipynb
   # To autogenerate a Table of Contents, run "myst init --write-toc"
 site:
   template: book-theme
@@ -18,7 +55,11 @@ site:
     style: ./custom.css
     hide_footer_links: true
     hide_toc: false
+    favicon: ./assets/favicon.ico
+    # logo: ./assets/favicon.ico
+    # favicon: ../figures/logo/favicon-32x32.png
+    folders: true
   actions:
-    - title: eecs245.org
+    - title: Course website
       url: https://eecs245.org
   #   favicon: favicon.ico
