@@ -13,7 +13,7 @@ project:
         - file: 01-supervised-learning/02-loss-functions-constant-model.ipynb
         - file: 01-supervised-learning/03-empirical-risk-minimization.ipynb
         - file: 01-supervised-learning/04-simple-linear-regression.ipynb
-        - file: 01-supervised-learning/05-towards-multiple-regression.ipynb
+        - file: 01-supervised-learning/05-least-squares-multiple.ipynb
     - title: "Part 2: Vectors and Matrices"
       children:
         - file: 02-vectors-and-matrices/01-intro-vectors.ipynb
@@ -48,7 +48,18 @@ project:
         - file: 06-probability/03-independence.ipynb
         - file: 06-probability/04-maximum-likelihood-estimation.ipynb
         - file: 06-probability/05-least-squares-revisited-again.ipynb
+    - title: "Part -1: Math Review"
+      file: 00-prelim/00-index.ipynb
+      children:
+        - file: 00-prelim/01-summation.ipynb
+        - file: 00-prelim/02-derivatives.ipynb
+        - file: 00-prelim/03-logarithms.ipynb
+        - file: 00-prelim/04-sets.ipynb
   # To autogenerate a Table of Contents, run "myst init --write-toc"
+  exports:
+    - format: pdf
+      template: plain_latex
+      output: exports/notes.pdf
 site:
   template: book-theme
   options:
