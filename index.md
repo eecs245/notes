@@ -22,7 +22,7 @@ Additionally, I'm using these digital notes as an opportunity to develop interac
 
 Here are some other resources that I've found helpful in writing these notes. Some of these are also linked in particular pages of the notes.
 
-- Gilbert Strang's [lecture videos](https://www.youtube.com/watch?v=ZK3O402wf1c&list=PL49CF3715CB9EF31D&index=1) and [textbook](https://math.mit.edu/~gs/linearalgebra/ila6/indexila6.html) on linear algebra. The intuition Strang provides in his lecture videos is legendary. He also has a new book titled [Linear Algebra and Learning from Data](https://math.mit.edu/~gs/learningfromdata/#lafe32) which is similar in spirit to these notes.
+- Gilbert Strang's [lecture videos](https://www.youtube.com/watch?v=ZK3O402wf1c&list=PL49CF3715CB9EF31D&index=1) and [textbook](https://math.mit.edu/~gs/linearalgebra/ila6/indexila6.html) on linear algebra. The intuition Strang provides in his lecture videos is legendary, and I've studied them closely in preparing for EECS 245. He also has a new book titled [Linear Algebra and Learning from Data](https://math.mit.edu/~gs/learningfromdata/#lafe32) which is similar in spirit to these notes. We've borrowed many exercises from his book.
 - 3blue1brown's [Essence of Linear Algebra](https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWD9XpO3KkyeJezhNY2NbB0LMSV&index=1) series on YouTube is a great resource for developing a visual intuition for linear algebra.
 
 If you have any feedback or suggestions, please don't hesitate to reach out to me at [rampure@umich.edu](mailto:rampure@umich.edu). (If you're a stranger on the internet who has found these notes, I'd love to hear from you too!)
