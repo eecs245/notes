@@ -1,7 +1,7 @@
 import plotly.graph_objects as go
 import numpy as np
 
-FONT_FAMILY = "Avenir"
+FONT_FAMILY = "Palatino"
 
 def plot_vectors(vectors, title=None, font=None, xaxis_title='x', yaxis_title='y', zaxis_title='z', vdeltax=0.3, vdeltay=0.3, vdeltaz=0.3, show_axis_labels=None):
     """
@@ -97,11 +97,12 @@ def plot_vectors_2d(vectors, title=None, font=None, xaxis_title='x', yaxis_title
             mode='lines+markers',
             line=dict(color=color, width=4),
             marker=dict(
-                size=[0, 22],  # No marker at start, bigger arrow at end
+                size=[0, 16],  # No marker at start, smaller arrow at end
                 color=[color, color],  # Same color for both points
                 symbol=['circle', 'arrow'],
                 angleref='previous'
             ),
+            hovertemplate='(%{x}, %{y})<extra></extra>',
             showlegend=False
         ))
         
@@ -136,6 +137,7 @@ def plot_vectors_2d(vectors, title=None, font=None, xaxis_title='x', yaxis_title
             text=[label],
             textposition='middle center',
             textfont=dict(size=label_font_size, color=color, family=FONT_FAMILY),
+            hoverinfo='skip',
             showlegend=False
         ))
         
@@ -165,13 +167,15 @@ def plot_vectors_2d(vectors, title=None, font=None, xaxis_title='x', yaxis_title
             title=xaxis_title if show_axis_labels else '',
             range=coord_range,
             gridcolor='#f0f0f0',
-            zerolinecolor='gray'
+            zerolinecolor='gray',
+            tickfont=dict(size=10)
         ),
         yaxis=dict(
             title=yaxis_title if show_axis_labels else '',
             range=coord_range,
             gridcolor='#f0f0f0',
-            zerolinecolor='gray'
+            zerolinecolor='gray',
+            tickfont=dict(size=10)
         ),
         width=800,
         height=600,
@@ -228,6 +232,7 @@ def plot_vectors_3d(vectors, title=None, font=None, xaxis_title='x', yaxis_title
             z=[0, z],
             mode='lines',
             line=dict(color=color, width=6),
+            hovertemplate='(%{x}, %{y}, %{z})<extra></extra>',
             showlegend=False
         ))
         
@@ -240,9 +245,10 @@ def plot_vectors_3d(vectors, title=None, font=None, xaxis_title='x', yaxis_title
             v=[y/10], 
             w=[z/10],
             sizemode="raw",
-            sizeref=0.6,
+            sizeref=0.4,
             colorscale=[[0, color], [1, color]],  # Single color
             showscale=False,
+            hoverinfo='skip',
             showlegend=False
         ))
         
@@ -268,10 +274,10 @@ def plot_vectors_3d(vectors, title=None, font=None, xaxis_title='x', yaxis_title
             perp_vector = perp_vector / np.linalg.norm(perp_vector)
             
             # Apply small offset
-            offset_scale = vdeltax * 0.5
-            label_x = mid_x + perp_vector[0] * offset_scale
-            label_y = mid_y + perp_vector[1] * offset_scale
-            label_z = mid_z + perp_vector[2] * offset_scale
+            # offset_scale = vdeltax * 0.5
+            label_x = mid_x + perp_vector[0] * vdeltax * 0.5
+            label_y = mid_y + perp_vector[1] * vdeltay * 0.5
+            label_z = mid_z + perp_vector[2] * vdeltaz * 0.5
         else:
             label_x, label_y, label_z = mid_x + vdeltax, mid_y + vdeltay, mid_z + vdeltaz
         
@@ -283,6 +289,7 @@ def plot_vectors_3d(vectors, title=None, font=None, xaxis_title='x', yaxis_title
             text=[label],
             textposition='middle center',
             textfont=dict(size=label_font_size, color=color, family=FONT_FAMILY),
+            hoverinfo='skip',
             showlegend=False
         ))
     
@@ -305,7 +312,8 @@ def plot_vectors_3d(vectors, title=None, font=None, xaxis_title='x', yaxis_title
                 gridcolor='#f0f0f0',
                 showbackground=True,
                 zerolinecolor='gray',
-                range=x_range
+                range=x_range,
+                tickfont=dict(size=10)
             ),
             yaxis=dict(
                 title=yaxis_title if show_axis_labels else '',
@@ -313,7 +321,8 @@ def plot_vectors_3d(vectors, title=None, font=None, xaxis_title='x', yaxis_title
                 gridcolor='#f0f0f0',
                 showbackground=True,
                 zerolinecolor='gray',
-                range=y_range
+                range=y_range,
+                tickfont=dict(size=10)
             ),
             zaxis=dict(
                 title=zaxis_title if show_axis_labels else '',
@@ -321,7 +330,8 @@ def plot_vectors_3d(vectors, title=None, font=None, xaxis_title='x', yaxis_title
                 gridcolor='#f0f0f0',
                 showbackground=True,
                 zerolinecolor='gray',
-                range=z_range
+                range=z_range,
+                tickfont=dict(size=10)
             ),
             bgcolor='white',
             camera=dict(
@@ -449,11 +459,12 @@ def plot_vectors_non_origin_2d(vectors, title=None, font=None, xaxis_title='x', 
             mode='lines+markers',
             line=dict(color=color, width=4),
             marker=dict(
-                size=[0, 22],  # No marker at start, bigger arrow at end
+                size=[0, 16],  # No marker at start, smaller arrow at end
                 color=[color, color],  # Same color for both points
                 symbol=['circle', 'arrow'],
                 angleref='previous'
             ),
+            hovertemplate='(%{x}, %{y})<extra></extra>',
             showlegend=False
         ))
         
@@ -495,13 +506,15 @@ def plot_vectors_non_origin_2d(vectors, title=None, font=None, xaxis_title='x', 
             title=xaxis_title if show_axis_labels else '',
             range=coord_range,
             gridcolor='#f0f0f0',
-            zerolinecolor='gray'
+            zerolinecolor='gray',
+            tickfont=dict(size=10)
         ),
         yaxis=dict(
             title=yaxis_title if show_axis_labels else '',
             range=coord_range,
             gridcolor='#f0f0f0',
-            zerolinecolor='gray'
+            zerolinecolor='gray',
+            tickfont=dict(size=10)
         ),
         width=800,
         height=600,
@@ -566,6 +579,7 @@ def plot_vectors_non_origin_3d(vectors, title=None, font=None, xaxis_title='x', 
             z=[start_z, end_z],
             mode='lines',
             line=dict(color=color, width=6),
+            hovertemplate='(%{x}, %{y}, %{z})<extra></extra>',
             showlegend=False
         ))
         
@@ -581,9 +595,10 @@ def plot_vectors_non_origin_3d(vectors, title=None, font=None, xaxis_title='x', 
             v=[vec_y/10], 
             w=[vec_z/10],
             sizemode="raw",
-            sizeref=0.6,
+            sizeref=0.4,
             colorscale=[[0, color], [1, color]],  # Single color
             showscale=False,
+            hoverinfo='skip',
             showlegend=False
         ))
         
@@ -623,6 +638,7 @@ def plot_vectors_non_origin_3d(vectors, title=None, font=None, xaxis_title='x', 
             text=[label],
             textposition='middle center',
             textfont=dict(size=label_font_size, color=color, family=FONT_FAMILY),
+            hoverinfo='skip',
             showlegend=False
         ))
     
@@ -640,7 +656,8 @@ def plot_vectors_non_origin_3d(vectors, title=None, font=None, xaxis_title='x', 
                 gridcolor='#f0f0f0',
                 showbackground=True,
                 zerolinecolor='gray',
-                range=x_range
+                range=x_range,
+                tickfont=dict(size=10)
             ),
             yaxis=dict(
                 title=yaxis_title if show_axis_labels else '',
@@ -648,7 +665,8 @@ def plot_vectors_non_origin_3d(vectors, title=None, font=None, xaxis_title='x', 
                 gridcolor='#f0f0f0',
                 showbackground=True,
                 zerolinecolor='gray',
-                range=y_range
+                range=y_range,
+                tickfont=dict(size=10)
             ),
             zaxis=dict(
                 title=zaxis_title if show_axis_labels else '',
@@ -656,7 +674,8 @@ def plot_vectors_non_origin_3d(vectors, title=None, font=None, xaxis_title='x', 
                 gridcolor='#f0f0f0',
                 showbackground=True,
                 zerolinecolor='gray',
-                range=z_range
+                range=z_range,
+                tickfont=dict(size=10)
             ),
             bgcolor='white',
             camera=dict(
