@@ -10,6 +10,19 @@ These notes are under active development this summer and may contain errors. Che
 
 Linear algebra, calculus, and probability form the basis of modern machine learning and artificial intelligence. **This course will introduce linear algebra from scratch by focusing on methods and examples from machine learning.** It will give students strong intuition for how linear algebra, calculus and probability are used in machine learning. While the course is primarily theoretical, we’ll look at practical applications involving real data in Python each week, so that students are able to apply what they’ve learned.
 
+:::{note} Prerequisites
+For context, the prerequisites for this course at the University of Michigan are Calculus 2 _or_ discrete mathematics. That is, we **don't** assume students have already seen linear algebra or multivariable calculus, but assume some mathematical maturity beyond a first course in calculus.
+
+These notes will involve some basic programming in Python. You'll even be able to run the code directly in your browser – check it out:
+
+<iframe
+  src="https://jupyterlite.github.io/demo/repl/index.html?kernel=python&code=print('University of Michigan'.replace('Michigan', '〽️'))"
+  width="100%"
+  height="600px"
+></iframe>
+
+:::
+
 There are a plethora of great resources for learning these ideas already, and I've read and taken inspiration from _many_ of them (linked below) in writing these notes and preparing for EECS 245.
 
 **So, why write these notes?** I – like other teachers – have a "story" in my mind that I want to tell, and that story has a particular order and flair that I haven't seen in other books or courses on linear algebra. Most linear algebra courses start with analyzing systems of equations and unknowns. These are extremely important to machine learning, as they are in other fields, but not in an immediately obvious way (at least not to me). This course will start by introducing the foundations of supervised learning – a branch of machine learning that deals with predicting a target variable, $y$, given a set of input variables, $x$ – and dive deep into the relevant ideas from linear algebra as they become necessary to advance this story.
