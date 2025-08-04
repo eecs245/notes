@@ -106,7 +106,7 @@ def plot_function_with_tangent_line(f, f_prime, x_range=(-10, 10), y_range=(-10,
     fig.update_layout(layout_dict)
     return fig
 
-def plot_functions(f_list, f_titles, crit_x=None, x_range=(-10, 10), y_range=(-10, 10), title=None, font=None, xaxis_title='x', yaxis_title='y', show_axis_labels=None):
+def plot_functions(f_list, f_titles, crit_x=None, x_range=(-10, 10), y_range=(-10, 10), title=None, font=None, xaxis_title='x', yaxis_title='y', show_axis_labels=None, exclude_x=None):
     """
     Plot function in 2D space.
     
@@ -121,15 +121,26 @@ def plot_functions(f_list, f_titles, crit_x=None, x_range=(-10, 10), y_range=(-1
         xaxis_title: Title for x-axis
         yaxis_title: Title for y-axis
         show_axis_labels: Whether to show axis labels
+        exclude_x: x-axis value to exclude
     
     Returns:
         plotly.graph_objects.Figure: The plotly figure object
     """
     fig = go.Figure()
-    x = np.linspace(x_range[0], x_range[1], 100)
     for f, f_title in zip(f_list, f_titles):
-        y = f(x)
+        if exclude_x is not None:
+            x1 = np.linspace(x_range[0], exclude_x-0.001, 100)
+            x2 = np.linspace(exclude_x+0.001, x_range[1], 100)
+            x = np.concatenate([x1, x2])
+
+            y1 = f(x1)
+            y2 = f(x2)
+            y = np.concatenate([y1, [None], y2])
+        else:
+            x = np.linspace(x_range[0], x_range[1], 100)
+            y = f(x)
         fig.add_trace(go.Scatter(x=x, y=y, mode='lines', name=f_title))
+    
     if crit_x is not None:
         crit_y = [f_list[0](x) for x in crit_x]
         fig.add_trace(go.Scatter(x=crit_x, y=crit_y, mode='markers', marker=dict(color='blue', size=7), name='Critical Points'))
@@ -167,74 +178,14 @@ def plot_functions(f_list, f_titles, crit_x=None, x_range=(-10, 10), y_range=(-1
     return fig
 
 
-
-def plot_function_with_derivative_and_crits(f, f_prime, crit_x, x_range=(-10, 10), y_range=(-10, 10), title=None, font=None, xaxis_title='x', yaxis_title='y', show_axis_labels=None):
-    """
-    Plot function in 2D space.
-    
-    Args:
-        f: function to plot
-        f_prime: derivative of function to plot
-        crit_x: critical points of function to plot
-        x_range: range of x-axis
-        y_range: range of y-axis
-        title: Optional title for the plot
-        font: Optional font dictionary
-        xaxis_title: Title for x-axis
-        yaxis_title: Title for y-axis
-        show_axis_labels: Whether to show axis labels
-    
-    Returns:
-        plotly.graph_objects.Figure: The plotly figure object
-    """
-    fig = go.Figure()
-    x = np.linspace(x_range[0], x_range[1], 100)
-    y = f(x)
-    y_prime = f_prime(x)
-    fig.add_trace(go.Scatter(x=x, y=y, mode='lines', name='f(x)'))
-    fig.add_trace(go.Scatter(x=x, y=y_prime, mode='lines', name='f\'(x)'))
-    crit_y = [f(x) for x in crit_x]
-    fig.add_trace(go.Scatter(x=crit_x, y=crit_y, mode='markers', marker=dict(color='blue', size=7), name='Critical Points'))
-    fig.add_trace(go.Scatter(x=crit_x, y=[0 for _ in crit_x], mode='markers', marker=dict(color='red', size=7), name='Derivative = 0'))
-
-    layout_dict = dict(
-        xaxis=dict(
-            title=xaxis_title if show_axis_labels else '',
-            range=x_range,
-            gridcolor='#f0f0f0',
-            zerolinecolor='gray',
-            tickfont=dict(size=10)
-        ),
-        yaxis=dict(
-            title=yaxis_title if show_axis_labels else '',
-            range=y_range,
-            gridcolor='#f0f0f0',
-            zerolinecolor='gray',
-            tickfont=dict(size=10)
-        ),
-        width=600,
-        height=600,
-        paper_bgcolor='white',
-        plot_bgcolor='white',
-        font=font,
-        margin=dict(l=50, r=50, t=50, b=50),
-        showlegend=True
-    )
-
-    if title is not None:
-        layout_dict['title'] = title
-
-
-    fig.update_layout(layout_dict)
-    return fig
-
-def plot_functions_grid(f_list, f_titles, rows=2, cols=2, x_range=(-10, 10), y_range=(-10, 10), title=None, font=None, xaxis_title='x', yaxis_title='y', show_axis_labels=None):
+def plot_functions_grid(f_list, f_titles, f_excludes=None, rows=2, cols=2, x_range=(-10, 10), y_range=(-10, 10), title=None, font=None, xaxis_title='x', yaxis_title='y', show_axis_labels=None, exclude_x=None, exclude_y=None):
     """
     Plot 2D functions in a grid.
     
     Args:
         f_list: list of functions to plot
         f_titles: list of titles for each function
+        f_excludes: list of x-axis values to exclude for function with same index
         x_range: range of x-axis
         y_range: range of y-axis
         title: Optional title for the plot
@@ -247,12 +198,24 @@ def plot_functions_grid(f_list, f_titles, rows=2, cols=2, x_range=(-10, 10), y_r
         plotly.graph_objects.Figure: The plotly figure object
     """
     fig = make_subplots(rows=rows, cols=cols, subplot_titles=f_titles)
-    x = np.linspace(x_range[0], x_range[1], 50)
+
     
     for r in range(rows):   
         for c in range(cols):
             f = f_list[r*cols + c]
-            y = f(x)
+            if f_excludes is not None and f_excludes[r*cols + c] is not None:
+                exclude_x = f_excludes[r*cols + c]
+                x1 = np.linspace(x_range[0], exclude_x-0.001, 100)
+                x2 = np.linspace(exclude_x+0.001, x_range[1], 100)
+                x = np.concatenate([x1, x2])
+
+                y1 = f(x1)
+                y2 = f(x2)
+                y = np.concatenate([y1, [None], y2])
+            else:
+                x = np.linspace(x_range[0], x_range[1], 100)
+                y = f(x)
+
             fig.add_trace(
                 go.Scatter(x=x, y=y, mode='lines', name=f_titles[r*cols + c]),
                 row=r + 1, col=c + 1)
@@ -289,4 +252,60 @@ def plot_functions_grid(f_list, f_titles, rows=2, cols=2, x_range=(-10, 10), y_r
         layout_dict['title'] = title
 
     fig.update_layout(**layout_dict)
+    return fig
+
+def plot_piecewise(f_list, intervals=None, x_range=(-10, 10), y_range=(-10, 10), title=None, font=None, xaxis_title='x', yaxis_title='y', show_axis_labels=None):
+    """
+    Plot function in 2D space.
+    
+    Args:
+        f: function to plot
+        f_prime: derivative of function to plot
+        crit_x: critical points of function to plot
+        x_range: range of x-axis
+        y_range: range of y-axis
+        title: Optional title for the plot
+        font: Optional font dictionary
+        xaxis_title: Title for x-axis
+        yaxis_title: Title for y-axis
+        show_axis_labels: Whether to show axis labels
+        intervals: list of tuples, each containing (x_start, x_end), REQUIRED
+    
+    Returns:
+        plotly.graph_objects.Figure: The plotly figure object
+    """
+    fig = go.Figure()
+    for i in range(len(f_list)):
+        x = np.linspace(intervals[i][0], intervals[i][1], 100)
+        y = f_list[i](x)
+        fig.add_trace(go.Scatter(x=x, y=y, mode='lines'))
+    
+    layout_dict = dict(
+        xaxis=dict(
+            title=xaxis_title if show_axis_labels else '',
+            range=x_range,
+            gridcolor='#f0f0f0',
+            zerolinecolor='gray',
+            tickfont=dict(size=10)
+        ),
+        yaxis=dict(
+            title=yaxis_title if show_axis_labels else '',
+            range=y_range,
+            gridcolor='#f0f0f0',
+            zerolinecolor='gray',
+            tickfont=dict(size=10)
+        ),
+        width=600,
+        height=600,
+        paper_bgcolor='white',
+        plot_bgcolor='white',
+        font=font,
+        margin=dict(l=50, r=50, t=50, b=50),
+    )
+
+    if title is not None:
+        layout_dict['title'] = title
+
+
+    fig.update_layout(layout_dict)
     return fig
