@@ -334,7 +334,7 @@ def plot_multiple_secant_lines(f, secant_points, x_range=(-10, 10), y_range=(-10
     fig.update_layout(layout_dict)
     return fig
 
-def plot_functions(f_list, f_titles, crit_x=None, x_range=(-10, 10), y_range=(-10, 10), title=None, font=None, xaxis_title='x', yaxis_title='y', show_axis_labels=None, exclude_x=None):
+def plot_functions(f_list, f_titles, crit_x=None, x_range=(-10, 10), y_range=(-10, 10), title=None, font=None, xaxis_title='x', yaxis_title='y', show_axis_labels=None, exclude_x=None, color_just_one=None):
     """
     Plot function in 2D space.
     
@@ -356,21 +356,23 @@ def plot_functions(f_list, f_titles, crit_x=None, x_range=(-10, 10), y_range=(-1
     """
     # Define color scheme for functions
     colors = ['#3d81f6', 'orange', '#d81b60', '#004d40', '#6f42c1', '#20c997']
+    if color_just_one is not None:
+        colors = [colors[color_just_one]] * len(f_list)
     
     fig = go.Figure()
     for i, (f, f_title) in enumerate(zip(f_list, f_titles)):
         color = colors[i] if i < len(colors) else colors[i % len(colors)]
         
         if exclude_x is not None:
-            x1 = np.linspace(x_range[0], exclude_x-0.001, 100)
-            x2 = np.linspace(exclude_x+0.001, x_range[1], 100)
+            x1 = np.linspace(x_range[0], exclude_x-0.001, 10000)
+            x2 = np.linspace(exclude_x+0.001, x_range[1], 10000)
             x = np.concatenate([x1, x2])
 
             y1 = f(x1)
             y2 = f(x2)
             y = np.concatenate([y1, [None], y2])
         else:
-            x = np.linspace(x_range[0], x_range[1], 100)
+            x = np.linspace(x_range[0], x_range[1], 10000)
             y = f(x)
         fig.add_trace(go.Scatter(x=x, y=y, mode='lines', name=f_title, line=dict(color=color)))
     
