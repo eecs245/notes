@@ -1,23 +1,39 @@
-/* Development warning banner
-body::before {
-    content: "⚠️ These notes are under active development this summer and may contain errors. Check back at the start of the Fall 2025 semester for a more complete version.";
+/*
+/* Development warning banner */
+
+/* body::before {
+    content: "These notes are under active development and may contain errors.";
     position: fixed;
     top: 0;
     left: 0;
-    right: 0; 
+    right: 0;
     margin: 0;
-    background-color: #f39c12;
-    color: white;
+    background-color: #f39c12; /* orange */
+    color: #ffffff;
     text-align: center;
-    padding: 8px;
+    padding: 8px 12px;
     font-weight: bold;
     z-index: 9999;
     font-size: 16px;
-}
+/* } */ 
 
-body {
-    padding-top: 20px;
+/* Offset page for fixed banner */
+/* body { 
+    padding-top: 48px; 
 } */
+
+/* If theme uses a sticky header, push it below the banner */
+/* .bd-header, header, .navbar {
+    top: 48px !important;
+} */
+
+/* Prefer CSS variables when supported by theme */
+:root {
+  --bd-sidebar-width: 240px;
+  --bd-sidebar-secondary-width: 240px;
+  --bd-page-width: 1400px;
+  --content-max-width: 1120px;
+}
 
 /* Edward Tufte's font styles */
 body {
@@ -51,8 +67,8 @@ footer {
 /* Remove navigation buttons from sidebar */
 .sidebar {
     padding-bottom: 0 !important;
-    width: 300px !important;
-    max-width: 300px !important;
+    width: 240px !important;
+    max-width: 240px !important;
 }
 
 .myst-footer {
@@ -62,7 +78,25 @@ footer {
 /* Additional sidebar width controls */
 .bd-sidebar,
 .bd-sidebar-primary,
+.bd-sidebar-secondary,
 .sidebar-drawer {
-    width: 300px !important;
-    max-width: 300px !important;
+    width: 240px !important;
+    max-width: 240px !important;
+}
+
+/* Right-hand on-this-page TOC */
+.bd-toc {
+    width: 240px !important;
+    max-width: 240px !important;
+}
+
+/* Widen reading column on large screens */
+@media (min-width: 992px) {
+  .bd-page-width {
+    max-width: 1400px !important;
+  }
+
+  .bd-content .bd-article-container {
+    max-width: 1120px !important;
+  }
 }

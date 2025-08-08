@@ -76,7 +76,7 @@ def plot_function_with_tangent_line(f, f_prime, x_range=(-10, 10), y_range=(-10,
         if title is not None:
             step_title = title
         else:
-            step_title = f"Tangent at x = {x_point:.2f}"
+            step_title = f"Tangent line at x = {x_point}"
         
         step = dict(
             method='update',
@@ -84,7 +84,7 @@ def plot_function_with_tangent_line(f, f_prime, x_range=(-10, 10), y_range=(-10,
                 'x': [x, x_tangent, [x_point]],
                 'y': [y, y_tangent, [y_point]]
             }, {
-                'title': step_title
+                'title': {'text': step_title}
             }],
             label=f"x = {x_point}"
         )
@@ -92,7 +92,7 @@ def plot_function_with_tangent_line(f, f_prime, x_range=(-10, 10), y_range=(-10,
 
     # Slider layout
     # Find index for x = -2 (default position)
-    default_index = x_slider.index(-4)
+    default_index = x_slider.index(-2)
     sliders = [dict(
         active=default_index,
         steps=slider_steps,
@@ -131,7 +131,7 @@ def plot_function_with_tangent_line(f, f_prime, x_range=(-10, 10), y_range=(-10,
     if title is not None:
         layout_dict['title'] = title
     else:
-        layout_dict['title'] = f"Tangent at x = {initial_x_point:.2f}"
+        layout_dict['title'] = f"Tangent line at x = {initial_x_point}"
 
     fig.update_layout(layout_dict)
     return fig
@@ -441,7 +441,7 @@ def plot_functions_grid(f_list, f_titles, f_excludes=None, rows=2, cols=2, x_ran
     # Define color scheme for functions
     colors = ['#3d81f6', 'orange', '#d81b60', '#004d40', '#6f42c1', '#20c997']
     
-    fig = make_subplots(rows=rows, cols=cols, subplot_titles=f_titles)
+    fig = make_subplots(rows=rows, cols=cols, subplot_titles=f_titles, horizontal_spacing=0.05, vertical_spacing=0.05)
 
     
     for r in range(rows):   
@@ -451,8 +451,8 @@ def plot_functions_grid(f_list, f_titles, f_excludes=None, rows=2, cols=2, x_ran
             
             if f_excludes is not None and f_excludes[r*cols + c] is not None:
                 exclude_x = f_excludes[r*cols + c]
-                x1 = np.linspace(x_range[0], exclude_x-0.001, 100)
-                x2 = np.linspace(exclude_x+0.001, x_range[1], 100)
+                x1 = np.linspace(x_range[0], exclude_x-0.001, 1000)
+                x2 = np.linspace(exclude_x+0.001, x_range[1], 1000)
                 x = np.concatenate([x1, x2])
 
                 y1 = f(x1)
@@ -467,12 +467,12 @@ def plot_functions_grid(f_list, f_titles, f_excludes=None, rows=2, cols=2, x_ran
                 row=r + 1, col=c + 1)
 
     layout_dict = dict(
-        width=600,
-        height=600,
+        width=400,
+        height=400,
         paper_bgcolor='white',
         plot_bgcolor='white',
         font=dict(family=FONT_FAMILY) if font is None else font,
-        margin=dict(l=50, r=50, t=50, b=50),
+        margin=dict(l=20, r=20, t=20, b=20),
         showlegend=True
     )
 
@@ -484,7 +484,8 @@ def plot_functions_grid(f_list, f_titles, f_excludes=None, rows=2, cols=2, x_ran
             gridcolor='#f0f0f0',
             zerolinecolor='gray',
             tickfont=dict(size=10, family=FONT_FAMILY),
-            title_font=dict(family=FONT_FAMILY)
+            title_font=dict(family=FONT_FAMILY),
+            showticklabels=False
         )
         layout_dict[f'yaxis{axis_suffix}'] = dict(
             title=yaxis_title if show_axis_labels else '',
@@ -492,7 +493,8 @@ def plot_functions_grid(f_list, f_titles, f_excludes=None, rows=2, cols=2, x_ran
             gridcolor='#f0f0f0',
             zerolinecolor='gray',
             tickfont=dict(size=10, family=FONT_FAMILY),
-            title_font=dict(family=FONT_FAMILY)
+            title_font=dict(family=FONT_FAMILY),
+            showticklabels=False
         )
     
 
