@@ -419,7 +419,8 @@ def plot_functions(f_list, f_titles, crit_x=None, x_range=(-10, 10), y_range=(-1
     return fig
 
 
-def plot_functions_grid(f_list, f_titles, f_excludes=None, rows=2, cols=2, x_range=(-10, 10), y_range=(-10, 10), title=None, font=None, xaxis_title='x', yaxis_title='y', show_axis_labels=None, exclude_x=None, exclude_y=None):
+def plot_functions_grid(f_list, f_titles, f_excludes=None, rows=2, cols=2, x_range=(-10, 10), y_range=(-10, 10), title=None, font=None, xaxis_title='x', yaxis_title='y', show_axis_labels=None, exclude_x=None, exclude_y=None,
+                        grid_spacing=0.05):
     """
     Plot 2D functions in a grid.
     
@@ -441,7 +442,7 @@ def plot_functions_grid(f_list, f_titles, f_excludes=None, rows=2, cols=2, x_ran
     # Define color scheme for functions
     colors = ['#3d81f6', 'orange', '#d81b60', '#004d40', '#6f42c1', '#20c997']
     
-    fig = make_subplots(rows=rows, cols=cols, subplot_titles=f_titles, horizontal_spacing=0.05, vertical_spacing=0.05)
+    fig = make_subplots(rows=rows, cols=cols, subplot_titles=f_titles, horizontal_spacing=grid_spacing, vertical_spacing=grid_spacing)
 
     
     for r in range(rows):   
@@ -451,15 +452,15 @@ def plot_functions_grid(f_list, f_titles, f_excludes=None, rows=2, cols=2, x_ran
             
             if f_excludes is not None and f_excludes[r*cols + c] is not None:
                 exclude_x = f_excludes[r*cols + c]
-                x1 = np.linspace(x_range[0], exclude_x-0.001, 1000)
-                x2 = np.linspace(exclude_x+0.001, x_range[1], 1000)
+                x1 = np.linspace(x_range[0], exclude_x-0.001, 10000)
+                x2 = np.linspace(exclude_x+0.001, x_range[1], 10000)
                 x = np.concatenate([x1, x2])
 
                 y1 = f(x1)
                 y2 = f(x2)
                 y = np.concatenate([y1, [None], y2])
             else:
-                x = np.linspace(x_range[0], x_range[1], 100)
+                x = np.linspace(x_range[0], x_range[1], 10000)
                 y = f(x)
 
             fig.add_trace(

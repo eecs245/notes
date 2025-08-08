@@ -44,15 +44,26 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Avenir', serif;
 }
 
-/* Hyperlink styles */
-/* a {
-    color: #0066cc;
-    text-decoration: none;
-} */
+/* Hyperlink styles - override theme defaults */
+article p a,
+.bd-article p a,
+.bd-content p a,
+div p a,
+main p a {
+    color: #1d3faf !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
 
-/* a:hover {
-    text-decoration: underline;
-} */
+article p a:hover,
+.bd-article p a:hover,
+.bd-content p a:hover,
+div p a:hover,
+main p a:hover {
+    color: #1d3faf !important;
+    text-decoration: underline !important;
+    border-bottom: none !important;
+}
 
 /* Remove navigation buttons */
 footer {
