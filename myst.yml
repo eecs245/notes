@@ -67,10 +67,11 @@ site:
     hide_footer_links: true
     hide_toc: false
     favicon: ./assets/favicon.ico
-    # logo: ./assets/favicon.ico
+    logo: ./assets/banner.svg
     # favicon: ../figures/logo/favicon-32x32.png
     folders: true
   actions:
     - title: Course website
       url: https://eecs245.org
-  #   favicon: favicon.ico
+    - title: Feedback?
+      url: mailto:rampure@umich.edu

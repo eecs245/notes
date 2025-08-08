@@ -1,3 +1,5 @@
+/* No-op: Removed highlight tag styling as it does not work */
+
 /*
 /* Development warning banner */
 
@@ -44,25 +46,31 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Avenir', serif;
 }
 
-/* Hyperlink styles - override theme defaults */
-article p a,
-.bd-article p a,
-.bd-content p a,
-div p a,
-main p a {
+/* Hyperlink styles - override theme defaults for all links in main content, including headings and lists, but not in nav/sidebar */
+main a:not(nav a):not(.sidebar a),
+article a:not(nav a):not(.sidebar a),
+.bd-article a:not(nav a):not(.sidebar a),
+.bd-content a:not(nav a):not(.sidebar a),
+div.bd-article a:not(nav a):not(.sidebar a),
+div.bd-content a:not(nav a):not(.sidebar a) {
     color: #1d3faf !important;
     text-decoration: none !important;
     border-bottom: none !important;
+    background: none !important;
+    transition: background 0.15s;
 }
 
-article p a:hover,
-.bd-article p a:hover,
-.bd-content p a:hover,
-div p a:hover,
-main p a:hover {
+main a:hover:not(nav a):not(.sidebar a),
+article a:hover:not(nav a):not(.sidebar a),
+.bd-article a:hover:not(nav a):not(.sidebar a),
+.bd-content a:hover:not(nav a):not(.sidebar a),
+div.bd-article a:hover:not(nav a):not(.sidebar a),
+div.bd-content a:hover:not(nav a):not(.sidebar a) {
     color: #1d3faf !important;
-    text-decoration: underline !important;
+    /* text-decoration: underline !important; */
     border-bottom: none !important;
+    background: #ffcb05 !important;
+    border-radius: 0.2em;
 }
 
 /* Remove navigation buttons */
@@ -109,5 +117,18 @@ footer {
 
   .bd-content .bd-article-container {
     max-width: 1120px !important;
+  }
+}
+
+/* Keep the logo reasonable on smaller screens */
+@media (max-width: 768px) {
+  header.bd-header .navbar-brand img,
+  header.bd-header .navbar-brand svg,
+  .navbar .navbar-brand img,
+  .navbar .navbar-brand svg,
+  .bd-header .navbar-brand img,
+  .bd-header .navbar-brand svg {
+    height: 32px !important;
+    max-height: 32px !important;
   }
 }
