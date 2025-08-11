@@ -4,19 +4,27 @@
 
 Written by Suraj Rampure (rampure@umich.edu; [rampure.org](https://rampure.org))
 
-:::{warning}
-These notes are under active development this summer and may contain errors. Check back at the start of the Fall 2025 semester for a more complete version.
-:::
-
 Linear algebra, calculus, and probability form the basis of modern machine learning and artificial intelligence. **This course will introduce linear algebra from scratch by focusing on methods and examples from machine learning.** It will give students strong intuition for how linear algebra, calculus and probability are used in machine learning. While the course is primarily theoretical, we’ll look at practical applications involving real data in Python each week, so that students are able to apply what they’ve learned.
 
+<span style="background: #ffcb05; color: #000; padding: 0.1em 0.2em; border-radius: 0.2em; font-weight: bold;">These notes are under active development in Fall 2025.</span> There will eventually be 7 chapters:
+1. Introduction to Supervised Learning
+2. Vectors and Matrices
+3. Regression using Linear Algebra
+4. Gradients
+5. Eigenvalues and Eigenvectors
+6. Probability
+0. Math Review (Chapter 0)
+
+Sections will be unveiled in the table of contents as they are completed, and will be linked directly on the course website (<a href="https://eecs245.org">eecs245.org</a>) along with each lecture.
+
 :::{note} Prerequisites
-For context, the prerequisites for this course at the University of Michigan are Calculus 2 _or_ discrete mathematics. That is, we **don't** assume students have already seen linear algebra or multivariable calculus, but assume some mathematical maturity beyond a first course in calculus.
+
+The prerequisites for this course at the University of Michigan are Calculus 2 _or_ discrete mathematics. That is, we **don't** assume students have already seen linear algebra or multivariable calculus, but assume some mathematical maturity beyond a first course in calculus. We will also assume some basic programming experience.
 
 These notes will involve some basic programming in Python. You'll even be able to run the code directly in your browser – check it out:
 
 <iframe
-  src="https://jupyterlite.github.io/demo/repl/index.html?kernel=python&code=print('University of Michigan'.replace('Michigan', '〽️'))"
+  src="https://jupyterlite.github.io/demo/repl/index.html?kernel=python&code=school = 'University of Michigan'&code=school.replace('Michigan', '〽️')"
   width="100%"
   height="600px"
 ></iframe>
@@ -40,6 +48,6 @@ Here are some other resources that I've found helpful in writing these notes. So
 
 If you have any feedback or suggestions, please don't hesitate to reach out to me at [rampure@umich.edu](mailto:rampure@umich.edu). (If you're a stranger on the internet who has found these notes, I'd love to hear from you too!)
 
-<!-- TODO embed a visualization -->
+In addition to the resources above, I'd like to thank **Vincent Shen**, a former student of mine, who helped write Chapter 0.2 and proofread much of Chapter 2 in Summer 2025.
 
 The contents of this book are licensed for free consumption under the following license: [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/).

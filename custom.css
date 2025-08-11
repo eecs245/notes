@@ -39,11 +39,11 @@
 
 /* Edward Tufte's font styles */
 body {
-    font-family: 'Avenir', serif;
+    font-family: 'Avenir', 'Helvetica Neue', Helvetica, Arial, system-ui, serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Avenir', serif;
+    font-family: 'Avenir', 'Helvetica Neue', Helvetica, Arial, system-ui, serif;
 }
 
 /* Hyperlink styles - override theme defaults for all links in main content, including headings and lists, but not in nav/sidebar */
@@ -118,6 +118,17 @@ footer {
   .bd-content .bd-article-container {
     max-width: 1120px !important;
   }
+}
+
+/* UM Gold text selection highlighting */
+::selection {
+    background-color: #ffcb05;
+    color: #000;
+}
+
+::-moz-selection {
+    background-color: #ffcb05;
+    color: #000;
 }
 
 /* Keep the logo reasonable on smaller screens */
