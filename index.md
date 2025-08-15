@@ -6,16 +6,17 @@ Written by Suraj Rampure (rampure@umich.edu; [rampure.org](https://rampure.org))
 
 Linear algebra, calculus, and probability form the basis of modern machine learning and artificial intelligence. **This course will introduce linear algebra from scratch by focusing on methods and examples from machine learning.** It will give students strong intuition for how linear algebra, calculus and probability are used in machine learning. While the course is primarily theoretical, we’ll look at practical applications involving real data in Python each week, so that students are able to apply what they’ve learned.
 
-<span style="background: #ffcb05; color: #000; padding: 0.1em 0.2em; border-radius: 0.2em; font-weight: bold;">These notes are under active development in Fall 2025.</span> There will eventually be 7 chapters:
-1. Introduction to Supervised Learning
-2. Vectors and Matrices
-3. Regression using Linear Algebra
-4. Gradients
-5. Eigenvalues and Eigenvectors
-6. Probability
-0. Math Review (Chapter 0)
+<span style="background: #ffcb05; color: #000; padding: 0.1em 0.2em; border-radius: 0.2em; font-weight: bold;">These notes are under active development in Fall 2025.</span> There will eventually be 7 chapters, each broken into several sections:
 
-Sections will be unveiled in the table of contents as they are completed, and will be linked directly on the course website (<a href="https://eecs245.org">eecs245.org</a>) along with each lecture.
+- **Chapter 1 (5 sections)**: Introduction to Supervised Learning
+- **Chapter 2 (8 sections)**: Vectors and Matrices
+- **Chapter 3 (3 sections)**: Regression using Linear Algebra
+- **Chapter 4 (4 sections)**: Gradients
+- **Chapter 5 (4 sections)**: Eigenvalues and Eigenvectors
+- **Chapter 6 (5 sections)**: Probability
+- **Chapter 0**: Math Review
+
+Each section corresponds roughly to a lecture in the course, though some lectures will cover multiple sections. Sections will be unveiled in the table of contents as they are completed, and will be linked directly on the course website (<a href="https://eecs245.org">eecs245.org</a>) along with each lecture.
 
 :::{note} Prerequisites
 
@@ -48,6 +49,6 @@ Here are some other resources that I've found helpful in writing these notes. So
 
 If you have any feedback or suggestions, please don't hesitate to reach out to me at [rampure@umich.edu](mailto:rampure@umich.edu). (If you're a stranger on the internet who has found these notes, I'd love to hear from you too!)
 
-In addition to the resources above, I'd like to thank **Vincent Shen**, a former student of mine, who helped write Chapter 0.2 and proofread much of Chapter 2 in Summer 2025.
+In addition to the resources above, I'd like to thank **Vincent Shen**, a former student of mine, who helped write Chapter 0.2 and Chapter 1, and proofread much of Chapter 2 in Summer 2025.
 
 The contents of this book are licensed for free consumption under the following license: [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/).
