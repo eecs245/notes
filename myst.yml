@@ -1,13 +1,13 @@
-# See docs at: https://mystmd.org/guide/frontmatter
 version: 1
 project:
   id: d2c12083-8095-432e-b7b0-07c9d956add7
-  title: Math for Machine Learning
+  title: Math for ML Course Notes
   description: Course notes for EECS 245 at the University of Michigan.
   github: eecs245/notes
   toc:
     - file: index.md
     - title: "Chapter 1: Introduction to Supervised Learning"
+      file: 01-supervised-learning/00-index.ipynb
       children:
         - file: 01-supervised-learning/01-intro.ipynb
         # - file: 01-supervised-learning/02-loss-functions-constant-model.ipynb
@@ -15,8 +15,9 @@ project:
         # - file: 01-supervised-learning/04-simple-linear-regression.ipynb
         # - file: 01-supervised-learning/05-least-squares-multiple.ipynb
     - title: "Chapter 2: Vectors and Matrices"
+      file: 02-vectors-and-matrices/00-index.ipynb
       children:
-        - file: 02-vectors-and-matrices/01-intro-vectors.ipynb
+        - file: 02-vectors-and-matrices/01-vectors.ipynb
         # - file: 02-vectors-and-matrices/02-dot-product.ipynb
         # - file: 02-vectors-and-matrices/03-projection-1.ipynb
         # - file: 02-vectors-and-matrices/04-linear-independence.ipynb
@@ -25,25 +26,29 @@ project:
         # - file: 02-vectors-and-matrices/07-inverses-and-determinants.ipynb
         # - file: 02-vectors-and-matrices/08-projection-2.ipynb
     - title: "Chapter 3: Regression using Linear Algebra"
+      file: 03-multiple-linear-regression/00-index.ipynb
       # children:
       #   - file: 03-multiple-linear-regression/01-regression-using-linear-algebra.ipynb
       #   - file: 03-multiple-linear-regression/02-incorporating-multiple-features.ipynb
       #   - file: 03-multiple-linear-regression/03-overfitting.ipynb
     - title: "Chapter 4: Gradients"
+      file: 04-gradients/00-index.ipynb
       # children:
       #   - file: 04-gradients/01-gradient-vector.ipynb
       #   - file: 04-gradients/02-least-squares-revisited.ipynb
       #   - file: 04-gradients/03-convexity.ipynb
       #   - file: 04-gradients/04-gradient-descent.ipynb
     - title: "Chapter 5: Eigenvalues and Eigenvectors"
+      file: 05-eigenvalues/00-index.ipynb
       # children:
       #   - file: 05-eigenvalues/01-intro.ipynb
-      #   - file: 05-eigenvalues/02-eigendecomposition.ipynb
+      #   - file: 05-eigenvalues/02-factorization.ipynb
       #   - file: 05-eigenvalues/03-singular-value-decomposition.ipynb
       #   - file: 05-eigenvalues/04-principal-components-analysis.ipynb
     - title: "Chapter 6: Probability"
+      file: 06-probability/00-index.ipynb
       # children:
-      #   - file: 06-probability/01-intro-random-variables.ipynb
+      #   - file: 06-probability/01-random-variables.ipynb
       #   - file: 06-probability/02-continuous-distributions.ipynb
       #   - file: 06-probability/03-independence.ipynb
       #   - file: 06-probability/04-maximum-likelihood-estimation.ipynb
@@ -71,7 +76,7 @@ site:
     # favicon: ../figures/logo/favicon-32x32.png
     folders: true
   actions:
-    - title: "Course Website (eecs245.org)"
+    - title: "Course Website"
       url: https://eecs245.org
     - title: "Feedback?"
       url: mailto:rampure@umich.edu

@@ -6,17 +6,7 @@ Written by Suraj Rampure (rampure@umich.edu; [rampure.org](https://rampure.org))
 
 Linear algebra, calculus, and probability form the basis of modern machine learning and artificial intelligence. **This course will introduce linear algebra from scratch by focusing on methods and examples from machine learning.** It will give students strong intuition for how linear algebra, calculus and probability are used in machine learning. While the course is primarily theoretical, we’ll look at practical applications involving real data in Python each week, so that students are able to apply what they’ve learned.
 
-<span style="background: #ffcb05; color: #000; padding: 0.1em 0.2em; border-radius: 0.2em; font-weight: bold;">These notes are under active development in Fall 2025.</span> There will eventually be 7 chapters, each broken into several sections:
-
-- **Chapter 1 (5 sections)**: Introduction to Supervised Learning
-- **Chapter 2 (8 sections)**: Vectors and Matrices
-- **Chapter 3 (3 sections)**: Regression using Linear Algebra
-- **Chapter 4 (4 sections)**: Gradients
-- **Chapter 5 (4 sections)**: Eigenvalues and Eigenvectors
-- **Chapter 6 (5 sections)**: Probability
-- **Chapter 0**: Math Review
-
-Each section corresponds roughly to a lecture in the course, though some lectures will cover multiple sections. Sections will be unveiled in the table of contents as they are completed, and will be linked directly on the course website (<a href="https://eecs245.org">eecs245.org</a>) along with each lecture.
+<span style="background: #ffcb05; color: #000; padding: 0.1em 0.2em; border-radius: 0.2em; font-weight: bold;">These notes are under active development in Fall 2025.</span> There will eventually be 7 chapters, each broken into several sections. Each section corresponds roughly to a lecture in the course, though some lectures will cover multiple sections. Sections will be unveiled in the table of contents as they are completed, and will be linked directly on the course website (<a href="https://eecs245.org">eecs245.org</a>) along with each lecture.
 
 :::{note} Prerequisites
 
