@@ -10,7 +10,7 @@ project:
       file: 01-supervised-learning/00-index.ipynb
       children:
         - file: 01-supervised-learning/01-intro.ipynb
-        # - file: 01-supervised-learning/02-loss-functions-constant-model.ipynb
+        - file: 01-supervised-learning/02-loss-functions-constant-model.ipynb
         # - file: 01-supervised-learning/03-empirical-risk-minimization.ipynb
         # - file: 01-supervised-learning/04-simple-linear-regression.ipynb
         # - file: 01-supervised-learning/05-least-squares-multiple.ipynb
