@@ -143,3 +143,21 @@ footer {
     max-height: 32px !important;
   }
 }
+
+/* Fix sidebar navigation expansion for Chapter 1 */
+/* When on Chapter 1 pages, keep Chapter 1 section expanded */
+body[data-page*="01-supervised-learning"] .bd-sidebar .bd-toc ul li:has(a[href*="01-supervised-learning/00-index"]) {
+  .bd-toc-group > details {
+    open: true !important;
+  }
+}
+
+/* Alternative selector for Chapter 1 navigation */
+.bd-sidebar .bd-toc li:has(a[href*="01-supervised-learning/00-index"]) details[open] {
+  open: true !important;
+}
+
+/* Force Chapter 1 to stay expanded when viewing Chapter 1 content */
+.bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"]) {
+  open: true !important;
+}
