@@ -58,7 +58,7 @@ project:
     - title: "Chapter -1: Math Review"
       file: 00-prelim/00-index.ipynb
       children:
-        # - file: 00-prelim/01-summation.ipynb
+        - file: 00-prelim/01-summation.ipynb
         - file: 00-prelim/02-derivatives.ipynb
         # - file: 00-prelim/03-logarithms.ipynb
         # - file: 00-prelim/04-sets.ipynb
