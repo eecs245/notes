@@ -146,18 +146,53 @@ footer {
 
 /* Fix sidebar navigation expansion for Chapter 1 */
 /* When on Chapter 1 pages, keep Chapter 1 section expanded */
-body[data-page*="01-supervised-learning"] .bd-sidebar .bd-toc ul li:has(a[href*="01-supervised-learning/00-index"]) {
-  .bd-toc-group > details {
-    open: true !important;
-  }
+body[data-page*="01-supervised-learning"] .bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"]) {
+  display: block !important;
 }
 
-/* Alternative selector for Chapter 1 navigation */
-.bd-sidebar .bd-toc li:has(a[href*="01-supervised-learning/00-index"]) details[open] {
-  open: true !important;
+body[data-page*="01-supervised-learning"] .bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"]) summary::after {
+  transform: rotate(90deg) !important;
 }
 
-/* Force Chapter 1 to stay expanded when viewing Chapter 1 content */
+/* Alternative approach: Force Chapter 1 to stay expanded when viewing Chapter 1 content */
+.bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"]) {
+  display: block !important;
+}
+
+.bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"]) summary::after {
+  transform: rotate(90deg) !important;
+}
+
+/* Ensure the details element is open by default for Chapter 1 */
 .bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"]) {
   open: true !important;
+}
+
+/* Additional protection against JavaScript interference */
+.bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"])[open] {
+  display: block !important;
+}
+
+.bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"])[open] summary::after {
+  transform: rotate(90deg) !important;
+}
+
+/* Force the content to be visible even if details is closed */
+.bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"]) > * {
+  display: block !important;
+}
+
+/* General fix for all chapter index pages - prevent TOC collapse when clicking chapter index */
+.bd-sidebar .bd-toc details:has(summary a[href*="00-index"]) {
+  open: true !important;
+  display: block !important;
+}
+
+.bd-sidebar .bd-toc details:has(summary a[href*="00-index"]) summary::after {
+  transform: rotate(90deg) !important;
+}
+
+/* Ensure chapter content is always visible when on chapter index pages */
+.bd-sidebar .bd-toc details:has(summary a[href*="00-index"]) > * {
+  display: block !important;
 }

@@ -9,11 +9,9 @@ project:
     - title: "Chapter 1: Introduction to Supervised Learning"
       file: 01-supervised-learning/00-index.ipynb
       children:
-        - title: "1.1. What is Machine Learning?"
-          file: 01-supervised-learning/01-intro.ipynb
-        - title: "1.2. Loss Functions and the Constant Model"
-          file: 01-supervised-learning/02-loss-functions-constant-model.ipynb
-        # - file: 01-supervised-learning/03-empirical-risk-minimization.ipynb
+        - file: 01-supervised-learning/01-intro.ipynb
+        - file: 01-supervised-learning/02-loss-functions-constant-model.ipynb
+        - file: 01-supervised-learning/03-empirical-risk-minimization.ipynb
         # - file: 01-supervised-learning/04-simple-linear-regression.ipynb
         # - file: 01-supervised-learning/05-least-squares-multiple.ipynb
     - title: "Chapter 2: Vectors and Matrices"
