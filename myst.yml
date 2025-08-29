@@ -69,7 +69,7 @@ site:
   template: book-theme
   options:
     style: ./custom.css
-    hide_footer_links: true
+    hide_footer_links: false
     hide_toc: false
     favicon: ./assets/favicon.ico
     logo: ./assets/banner.svg
