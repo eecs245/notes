@@ -12,7 +12,7 @@ project:
         - file: 01-supervised-learning/01-intro.ipynb
         - file: 01-supervised-learning/02-loss-functions-constant-model.ipynb
         - file: 01-supervised-learning/03-empirical-risk-minimization.ipynb
-        # - file: 01-supervised-learning/04-simple-linear-regression.ipynb
+        - file: 01-supervised-learning/04-simple-linear-regression.ipynb
         # - file: 01-supervised-learning/05-least-squares-multiple.ipynb
     - title: "Chapter 2: Vectors and Matrices"
       file: 02-vectors-and-matrices/00-index.ipynb
