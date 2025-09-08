@@ -7,15 +7,15 @@ project:
   toc:
     - file: index.md
     - title: "Chapter 1: Introduction to Supervised Learning"
-      file: 01-supervised-learning/00-index.ipynb
       children:
+        # - file: 01-supervised-learning/00-index.ipynb
         - file: 01-supervised-learning/01-intro.ipynb
         - file: 01-supervised-learning/02-loss-functions-constant-model.ipynb
         - file: 01-supervised-learning/03-empirical-risk-minimization.ipynb
         - file: 01-supervised-learning/04-simple-linear-regression.ipynb
         # - file: 01-supervised-learning/05-least-squares-multiple.ipynb
     - title: "Chapter 2: Vectors and Matrices"
-      file: 02-vectors-and-matrices/00-index.ipynb
+      # file: 02-vectors-and-matrices/00-index.ipynb
       children:
         - file: 02-vectors-and-matrices/01-vectors.ipynb
         # - file: 02-vectors-and-matrices/02-dot-product.ipynb
@@ -54,7 +54,7 @@ project:
       #   - file: 06-probability/04-maximum-likelihood-estimation.ipynb
       #   - file: 06-probability/05-least-squares-revisited-again.ipynb
     - title: "Chapter -1: Math Review"
-      file: 00-prelim/00-index.ipynb
+      # file: 00-prelim/00-index.ipynb
       children:
         - file: 00-prelim/01-summation.ipynb
         - file: 00-prelim/02-derivatives.ipynb
