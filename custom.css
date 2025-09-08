@@ -3,6 +3,24 @@
 /*
 /* Development warning banner */
 
+/* In your custom.css - Force TOC sections to stay expanded */
+.bd-sidebar-primary .toctree-l1.current > ul,
+.bd-sidebar-primary .toctree-l1.has-children > ul {
+    display: block !important;
+    height: auto !important;
+    opacity: 1 !important;
+}
+
+/* Disable the collapse animation entirely */
+.bd-sidebar-primary .toctree-l1 > ul {
+    transition: none !important;
+}
+
+/* Keep expand arrows in expanded state */
+.bd-sidebar-primary .toctree-expand {
+    transform: rotate(90deg) !important;
+}
+
 /* body::before {
     content: "These notes are under active development and may contain errors.";
     position: fixed;
