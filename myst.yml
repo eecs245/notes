@@ -19,7 +19,7 @@ project:
       children:
         - file: 02-vectors-and-matrices/01-vectors.ipynb
         - file: 02-vectors-and-matrices/02-dot-product.ipynb
-        # - file: 02-vectors-and-matrices/03-projection-1.ipynb
+        - file: 02-vectors-and-matrices/03-projection-1.ipynb
         # - file: 02-vectors-and-matrices/04-linear-independence.ipynb
         # - file: 02-vectors-and-matrices/05-matrices.ipynb
         # - file: 02-vectors-and-matrices/06-rank-and-vector-spaces.ipynb
