@@ -75,6 +75,7 @@ site:
     favicon: ./assets/favicon.ico
     logo: ./assets/banner.svg
     # favicon: ../figures/logo/favicon-32x32.png
+    folders: true
   actions:
     - title: "Course Website"
       url: https://eecs245.org
