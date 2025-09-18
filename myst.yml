@@ -21,6 +21,7 @@ project:
         - file: 02-vectors-and-matrices/02-dot-product.ipynb
         - file: 02-vectors-and-matrices/03-projection-1.ipynb
         - file: 02-vectors-and-matrices/04-span-linear-independence.ipynb
+        # - file: 02-vectors-and-matrices/05-lines-planes-hyperplanes.ipynb
         # - file: 02-vectors-and-matrices/05-matrices.ipynb
         # - file: 02-vectors-and-matrices/06-rank-and-vector-spaces.ipynb
         # - file: 02-vectors-and-matrices/07-inverses-and-determinants.ipynb
@@ -74,9 +75,13 @@ site:
     favicon: ./assets/favicon.ico
     logo: ./assets/banner.svg
     # favicon: ../figures/logo/favicon-32x32.png
-    folders: true
   actions:
     - title: "Course Website"
       url: https://eecs245.org
     - title: "Feedback?"
       url: mailto:rampure@umich.edu
+# sphinx:
+#   config:
+#     html_theme_options:
+#         default_mode: light     # force light mode
+#         switcher: false         # hide the dark/light toggle
