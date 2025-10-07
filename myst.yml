@@ -24,7 +24,7 @@ project:
         - file: 02-vectors-and-matrices/05-lines-planes-hyperplanes.ipynb
         - file: 02-vectors-and-matrices/06-vector-spaces.ipynb
         - file: 02-vectors-and-matrices/07-matrices.ipynb
-        # - file: 02-vectors-and-matrices/06-rank-and-vector-spaces.ipynb
+        - file: 02-vectors-and-matrices/08-rank.ipynb
         # - file: 02-vectors-and-matrices/07-inverses-and-determinants.ipynb
         # - file: 02-vectors-and-matrices/08-projection-2.ipynb
     - title: "Chapter 3: Regression using Linear Algebra"
