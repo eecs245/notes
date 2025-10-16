@@ -1,2 +1,5 @@
+_build/
 _build/**
-*.ipynb_checkpoints/**
+**/_build/**
+**/_build/site/**
+**/_build/site/public/**

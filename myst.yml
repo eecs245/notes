@@ -26,8 +26,7 @@ project:
         - file: 02-vectors-and-matrices/07-matrices.ipynb
         - file: 02-vectors-and-matrices/08-rank.ipynb
         - file: 02-vectors-and-matrices/09-inverses.ipynb
-        # - file: 02-vectors-and-matrices/07-inverses-and-determinants.ipynb
-        # - file: 02-vectors-and-matrices/08-projection-2.ipynb
+        - file: 02-vectors-and-matrices/10-projection-2.ipynb
     - title: "Chapter 3: Regression using Linear Algebra"
       file: 03-multiple-linear-regression/00-index.ipynb
       # children:
