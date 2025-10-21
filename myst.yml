@@ -29,8 +29,8 @@ project:
         - file: 02-vectors-and-matrices/10-projection-2.ipynb
     - title: "Chapter 3: Regression using Linear Algebra"
       file: 03-multiple-linear-regression/00-index.ipynb
-      # children:
-      #   - file: 03-multiple-linear-regression/01-regression-using-linear-algebra.ipynb
+      children:
+        - file: 03-multiple-linear-regression/01-regression-using-linear-algebra.ipynb
       #   - file: 03-multiple-linear-regression/02-incorporating-multiple-features.ipynb
       #   - file: 03-multiple-linear-regression/03-overfitting.ipynb
     - title: "Chapter 4: Gradients"
