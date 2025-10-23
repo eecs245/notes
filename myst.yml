@@ -31,7 +31,7 @@ project:
       file: 03-multiple-linear-regression/00-index.ipynb
       children:
         - file: 03-multiple-linear-regression/01-regression-using-linear-algebra.ipynb
-      #   - file: 03-multiple-linear-regression/02-incorporating-multiple-features.ipynb
+        - file: 03-multiple-linear-regression/02-multiple-linear-regression.ipynb
       #   - file: 03-multiple-linear-regression/03-overfitting.ipynb
     - title: "Chapter 4: Gradients"
       file: 04-gradients/00-index.ipynb
