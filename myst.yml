@@ -35,8 +35,8 @@ project:
       #   - file: 03-multiple-linear-regression/03-overfitting.ipynb
     - title: "Chapter 4: Gradients"
       file: 04-gradients/00-index.ipynb
-      # children:
-      #   - file: 04-gradients/01-gradient-vector.ipynb
+      children:
+        - file: 04-gradients/01-gradient-vector.ipynb
       #   - file: 04-gradients/02-least-squares-revisited.ipynb
       #   - file: 04-gradients/03-convexity.ipynb
       #   - file: 04-gradients/04-gradient-descent.ipynb
