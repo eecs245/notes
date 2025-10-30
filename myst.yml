@@ -37,7 +37,7 @@ project:
       file: 04-gradients/00-index.ipynb
       children:
         - file: 04-gradients/01-gradient-vector.ipynb
-      #   - file: 04-gradients/02-least-squares-revisited.ipynb
+        - file: 04-gradients/02-gradient-descent.ipynb
       #   - file: 04-gradients/03-convexity.ipynb
       #   - file: 04-gradients/04-gradient-descent.ipynb
     - title: "Chapter 5: Eigenvalues and Eigenvectors"
