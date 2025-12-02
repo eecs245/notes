@@ -47,7 +47,7 @@ project:
         - file: 05-eigenvalues/015-adjacency-matrices.ipynb
         - file: 05-eigenvalues/02-diagonalization.ipynb
         - file: 05-eigenvalues/03-singular-value-decomposition.ipynb
-      #   - file: 05-eigenvalues/04-principal-components-analysis.ipynb
+        - file: 05-eigenvalues/04-principal-components-analysis.ipynb
     - title: "Chapter 6: Probability"
       file: 06-probability/00-index.ipynb
       # children:
