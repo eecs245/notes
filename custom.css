@@ -91,6 +91,20 @@ div.bd-content a:hover:not(nav a):not(.sidebar a) {
     border-radius: 0.2em;
 }
 
+/* Dark mode: content links only (pydata-sphinx-theme / Jupyter Book) */
+html[data-theme="dark"] .bd-main .bd-content a:not(.headerlink):not(.toclink),
+html[data-theme="dark"] .bd-main .bd-content article a:not(.headerlink):not(.toclink) {
+  color: #ffcb05 !important;
+}
+
+/* Hover/focus */
+html[data-theme="dark"] .bd-main .bd-content a:not(.headerlink):not(.toclink):hover,
+html[data-theme="dark"] .bd-main .bd-content a:not(.headerlink):not(.toclink):focus {
+  color: #000 !important;
+  background: #ffcb05 !important;
+  text-decoration: none;
+}
+
 /* Remove navigation buttons */
 footer {
     display: none !important;
@@ -164,39 +178,39 @@ footer {
 
 /* Fix sidebar navigation expansion for Chapter 1 */
 /* When on Chapter 1 pages, keep Chapter 1 section expanded */
-body[data-page*="01-supervised-learning"] .bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"]) {
+body[data-page*="01_introduction_to_supervised_learning"] .bd-sidebar .bd-toc details:has(summary a[href*="01_introduction_to_supervised_learning/00-index"]) {
   display: block !important;
 }
 
-body[data-page*="01-supervised-learning"] .bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"]) summary::after {
+body[data-page*="01_introduction_to_supervised_learning"] .bd-sidebar .bd-toc details:has(summary a[href*="01_introduction_to_supervised_learning/00-index"]) summary::after {
   transform: rotate(90deg) !important;
 }
 
 /* Alternative approach: Force Chapter 1 to stay expanded when viewing Chapter 1 content */
-.bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"]) {
+.bd-sidebar .bd-toc details:has(summary a[href*="01_introduction_to_supervised_learning/00-index"]) {
   display: block !important;
 }
 
-.bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"]) summary::after {
+.bd-sidebar .bd-toc details:has(summary a[href*="01_introduction_to_supervised_learning/00-index"]) summary::after {
   transform: rotate(90deg) !important;
 }
 
 /* Ensure the details element is open by default for Chapter 1 */
-.bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"]) {
+.bd-sidebar .bd-toc details:has(summary a[href*="01_introduction_to_supervised_learning/00-index"]) {
   open: true !important;
 }
 
 /* Additional protection against JavaScript interference */
-.bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"])[open] {
+.bd-sidebar .bd-toc details:has(summary a[href*="01_introduction_to_supervised_learning/00-index"])[open] {
   display: block !important;
 }
 
-.bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"])[open] summary::after {
+.bd-sidebar .bd-toc details:has(summary a[href*="01_introduction_to_supervised_learning/00-index"])[open] summary::after {
   transform: rotate(90deg) !important;
 }
 
 /* Force the content to be visible even if details is closed */
-.bd-sidebar .bd-toc details:has(summary a[href*="01-supervised-learning/00-index"]) > * {
+.bd-sidebar .bd-toc details:has(summary a[href*="01_introduction_to_supervised_learning/00-index"]) > * {
   display: block !important;
 }
 
@@ -213,4 +227,32 @@ body[data-page*="01-supervised-learning"] .bd-sidebar .bd-toc details:has(summar
 /* Ensure chapter content is always visible when on chapter index pages */
 .bd-sidebar .bd-toc details:has(summary a[href*="00-index"]) > * {
   display: block !important;
+}
+
+/* Processing banner - orange banner at top of page */
+.processing-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ff9500; /* orange */
+  color: #ffffff;
+  text-align: center;
+  padding: 12px 16px;
+  font-weight: 500;
+  font-size: 15px;
+  z-index: 9999;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Offset page content when banner is active */
+body.processing-banner-active {
+  padding-top: 48px;
+}
+
+/* Adjust header position when banner is active */
+body.processing-banner-active .bd-header,
+body.processing-banner-active header,
+body.processing-banner-active .navbar {
+  top: 48px !important;
 }
