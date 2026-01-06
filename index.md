@@ -1,12 +1,14 @@
-# Mathematics for Machine Learning
+# Mathematics for Machine Learning: Course Notes for [EECS 245](https://eecs245.org) at the University of Michigan
 
-### Course Notes for [EECS 245](https://eecs245.org) at the University of Michigan
+by **Suraj Rampure** (rampure@umich.edu; [rampure.org](https://rampure.org))
 
-Written by Suraj Rampure (rampure@umich.edu; [rampure.org](https://rampure.org))
+
+
+## Overview
 
 Linear algebra, calculus, and probability form the basis of modern machine learning and artificial intelligence. **This course introduces linear algebra from scratch by focusing on methods and examples from machine learning.** It will give students strong intuition for how linear algebra, calculus and probability are used in machine learning. While the course is primarily theoretical, we’ll look at practical applications involving real data in Python each week, so that students are able to apply what they’ve learned.
 
-These notes are organized into 10 **chapters**, each with several pages called **sections**:
+These notes are organized into 10 chapters:
 
 1. Introduction to Supervised Learning
 2. Simple Linear Regression
@@ -19,19 +21,16 @@ These notes are organized into 10 **chapters**, each with several pages called *
 9. Eigenvalues and Eigenvectors
 10. Singular Value Decomposition
 
+Each chapter consists of several pages, called "sections", so Chapter 3.2 (for example) is a section.
+
 :::{note} Prerequisites
 
-The prerequisites for this course at the University of Michigan are Calculus 2 _or_ discrete mathematics. That is, we **don't** assume students have already seen linear algebra or multivariable calculus, but assume some mathematical maturity beyond a first course in calculus. We will also assume some basic programming experience.
-
-These notes will involve some basic programming in Python. You'll even be able to run the code directly in your browser – check it out:
-
-<iframe
-  src="https://jupyterlite.github.io/demo/repl/index.html?kernel=python&code=school = 'University of Michigan'&code=school.replace('Michigan', '〽️')"
-  width="100%"
-  height="600px"
-></iframe>
-
+The prerequisites for this course at the University of Michigan are Calculus 2 _or_ discrete mathematics. That is, we **don't** assume students have already seen linear algebra or multivariable calculus, but assume some mathematical maturity beyond a first course in calculus. We will also assume some basic programming experience; we will show examples of Python code throughout.
 :::
+
+---
+
+## Why Write These Notes?
 
 There are a plethora of great resources for learning these ideas already, and I've read and taken inspiration from _many_ of them (linked below) in writing these notes and preparing for EECS 245.
 
@@ -42,6 +41,10 @@ This is, admittedly, an experiment in how to teach linear algebra. We may change
 While I could refer students to different books for different topics, I want to provide a single source of truth that I can refer students to, so that the course narrative is consistent. This is especially important since EECS 245 will be taught _without_ slides. Instead, in each lecture, I will start with a blank whiteboard (on my iPad) and provide high-level overviews of the content. These notes will follow the same story, but with added details, examples, and exercises.
 
 Additionally, I'm using these digital notes as an opportunity to develop interactive visualizations of various concepts in linear algebra, to bring these ideas to life.
+
+---
+
+## Acknowledgements, Feedback, and License
 
 Here are some other resources that I've found helpful in writing these notes. Some of these are also linked in particular pages of the notes.
 

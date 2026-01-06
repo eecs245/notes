@@ -6,6 +6,7 @@ project:
   github: eecs245/notes
   toc:
     - file: index.md
+    - file: advice.md
     - title: "Chapter 1: Introduction to Supervised Learning"
       # file: 01_introduction_to_supervised_learning/00-index.ipynb
       children:
