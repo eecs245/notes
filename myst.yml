@@ -5,17 +5,15 @@ project:
   description: Course notes for EECS 245 at the University of Michigan.
   github: eecs245/notes
   toc:
-    - file: index.md
+    - file: index.ipynb
     - file: advice.md
     - title: "Chapter 1: Introduction to Supervised Learning"
-      # file: 01_introduction_to_supervised_learning/00-index.ipynb
       children:
         - file: 01_introduction_to_supervised_learning/01-what-is-machine-learning.ipynb
         - file: 01_introduction_to_supervised_learning/02-squared-loss-constant-model.ipynb
         - file: 01_introduction_to_supervised_learning/03-absolute-loss.ipynb
         - file: 01_introduction_to_supervised_learning/04-comparing-loss-functions.ipynb
     - title: "Chapter 2: Simple Linear Regression"
-      # file: 02_simple_linear_regression/00-index.ipynb
       children:
         - file: 02_simple_linear_regression/01-overview.ipynb
         - file: 02_simple_linear_regression/02-partial-derivatives.ipynb
@@ -23,40 +21,34 @@ project:
         - file: 02_simple_linear_regression/04-correlation.ipynb
         - file: 02_simple_linear_regression/05-least-squares.ipynb
     - title: "Chapter 3: Vectors"
-      # file: 03_vectors/00-index.ipynb
       children:
         - file: 03_vectors/01-vectors-and-linear-combinations.ipynb
         - file: 03_vectors/02-norms.ipynb
         - file: 03_vectors/03-dot-product.ipynb
         - file: 03_vectors/04-projecting-onto-a-single-vector.ipynb
     - title: "Chapter 4: Linear Independence"
-      # file: 04_linear_independence/00-index.ipynb
       children:
         - file: 04_linear_independence/01-span.ipynb
         - file: 04_linear_independence/02-linear-independence.ipynb
         - file: 04_linear_independence/03-vector-spaces-basis-dimension.ipynb
         - file: 04_linear_independence/04-lines-planes-hyperplanes.ipynb
     - title: "Chapter 5: Matrices"
-      # file: 05_matrices/00-index.ipynb
       children:
         - file: 05_matrices/01-matrix-operations.ipynb
         - file: 05_matrices/02-special-matrices.ipynb
         - file: 05_matrices/03-rank-and-column-space.ipynb
         - file: 05_matrices/04-null-space-rank-nullity.ipynb
     - title: "Chapter 6: Linear Transformations and Projections"
-      # file: 06_linear_transformations_and_projections/00-index.ipynb
       children:
         - file: 06_linear_transformations_and_projections/01-linear-transformations.ipynb
         - file: 06_linear_transformations_and_projections/02-inverses.ipynb
         - file: 06_linear_transformations_and_projections/03-projecting-onto-column-space.ipynb
         - file: 06_linear_transformations_and_projections/04-complete-solution.ipynb
     - title: "Chapter 7: Regression using Linear Algebra"
-      # file: 07_regression_using_linear_algebra/00-index.ipynb
       children:
         - file: 07_regression_using_linear_algebra/01-regression-using-linear-algebra.ipynb
         - file: 07_regression_using_linear_algebra/02-multiple-linear-regression.ipynb
     - title: "Chapter 8: Gradients"
-      # file: 08_gradients/00-index.ipynb
       children:
         - file: 08_gradients/01-gradient-vector.ipynb
         - file: 08_gradients/02-gradients-matrix-vector-operations.ipynb
@@ -64,7 +56,6 @@ project:
         - file: 08_gradients/04-gradient-descent-erm.ipynb
         - file: 08_gradients/05-convexity.ipynb
     - title: "Chapter 9: Eigenvalues and Eigenvectors"
-      # file: 09_eigenvalues_and_eigenvectors/00-index.ipynb
       children:
         - file: 09_eigenvalues_and_eigenvectors/01-eigenvalues-eigenvectors.ipynb
         - file: 09_eigenvalues_and_eigenvectors/02-rayleigh-quotient.ipynb
@@ -72,12 +63,15 @@ project:
         - file: 09_eigenvalues_and_eigenvectors/04-multiplicities-diagonalization.ipynb
         - file: 09_eigenvalues_and_eigenvectors/05-symmetric-matrices-spectral-theorem.ipynb
     - title: "Chapter 10: Singular Value Decomposition"
-      # file: 10_singular_value_decomposition/00-index.ipynb
       children:
         - file: 10_singular_value_decomposition/01-computing-svd.ipynb
         - file: 10_singular_value_decomposition/02-low-rank-approximation.ipynb
         - file: 10_singular_value_decomposition/03-best-direction.ipynb
         - file: 10_singular_value_decomposition/04-principal-components-analysis.ipynb
+    - title: "Appendix: Mathematical Foundations"
+      children:
+        - file: 00_math_foundations/01-summation.ipynb
+        - file: 00_math_foundations/02-derivatives.ipynb
   # To autogenerate a Table of Contents, run "myst init --write-toc"
   exports:
     - format: pdf
@@ -89,6 +83,7 @@ site:
     style: ./custom.css
     scripts:
       - ./assets/processing-banner.js
+      - ./assets/lightmode-banner.js
     hide_footer_links: false
     hide_toc: false
     favicon: ./assets/favicon.ico

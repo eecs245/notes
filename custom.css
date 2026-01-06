@@ -256,3 +256,59 @@ body.processing-banner-active header,
 body.processing-banner-active .navbar {
   top: 48px !important;
 }
+
+/* Light mode reminder banner */
+.lightmode-banner {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background-color: #ff9500;
+  color: #ffffff;
+  text-align: center;
+  padding: 0 16px;
+  font-weight: 500;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  box-sizing: border-box;
+}
+
+.lightmode-banner__close {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 16px;
+  width: 16px;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 16px;
+  cursor: pointer;
+  padding: 0;
+}
+
+body.lightmode-banner-active .bd-header,
+body.lightmode-banner-active header,
+body.lightmode-banner-active .navbar {
+  top: 20px !important;
+}
+
+body.lightmode-banner-active .processing-banner {
+  top: 20px;
+}
+
+body.lightmode-banner-active.processing-banner-active {
+  padding-top: 68px;
+}
+
+body.lightmode-banner-active.processing-banner-active .bd-header,
+body.lightmode-banner-active.processing-banner-active header,
+body.lightmode-banner-active.processing-banner-active .navbar {
+  top: 68px !important;
+}
