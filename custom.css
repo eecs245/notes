@@ -170,7 +170,7 @@ span.activity-toc-heading,
 /* Bold all TOC links */
 .bd-toc li a,
 li.myst-outline-item a {
-  font-weight: 500 !important;
+  font-weight: 450 !important;
 }
 
 /* Activity TOC link styling - override Tailwind utility classes */
@@ -179,7 +179,7 @@ li.myst-outline-item a {
 #activities-toc a,
 li.myst-outline-item a[href^="#activity-"] {
   color: #1f8f3a !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
   position: relative;
 }
 
