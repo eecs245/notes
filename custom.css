@@ -167,10 +167,18 @@ span.activity-toc-heading,
   border: 0 !important;
 }
 
-/* Bold all TOC links */
+/* Bold all TOC links and normalize color (prevent graying of deeper headings) */
 .bd-toc li a,
 li.myst-outline-item a {
   font-weight: 450 !important;
+  color: #1e293b !important;
+  opacity: 1 !important;
+}
+
+/* Dark mode TOC links */
+html[data-theme="dark"] .bd-toc li a,
+html[data-theme="dark"] li.myst-outline-item a {
+  color: #e2e8f0 !important;
 }
 
 /* Activity TOC link styling - override Tailwind utility classes */
@@ -178,7 +186,7 @@ li.myst-outline-item a {
 .bd-toc [data-activities-toc] a,
 #activities-toc a,
 li.myst-outline-item a[href^="#activity-"] {
-  color: #1f8f3a !important;
+  color: #4a8f6b !important; /* A slightly grayer, muted green */
   font-weight: 500 !important;
   position: relative;
 }
@@ -186,8 +194,8 @@ li.myst-outline-item a[href^="#activity-"] {
 /* Add ✍️ after activity TOC links */
 li.myst-outline-item a[href^="#activity-"]::after {
   content: ' ✍️';
-  font-size: 1em;
-  margin-left: 0.2em;
+  font-size: 0.5em;
+  margin-left: 0.25em;
   vertical-align: middle;
 }
 
@@ -204,7 +212,7 @@ li.myst-outline-item a[href^="#activity-"]:focus {
 /* Override Tailwind classes on the parent li for activity items */
 li.myst-outline-item:has(a[href^="#activity-"]) {
   background-color: transparent !important;
-  border-left-color: #1f8f3a !important;
+  border-left-color: transparent !important;
 }
 
 li.myst-outline-item:has(a[href^="#activity-"]):hover {
