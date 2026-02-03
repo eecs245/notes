@@ -4,6 +4,9 @@ project:
   title: EECS 245 Course Notes
   description: Course notes for EECS 245 at the University of Michigan.
   github: eecs245/notes
+  plugins:
+    - type: javascript
+      path: ./plugins/activities-toc-headings.mjs
   toc:
     - file: index.ipynb
     - file: advice.md
@@ -84,11 +87,14 @@ site:
     scripts:
       - ./assets/processing-banner.js
       - ./assets/lightmode-banner.js
+      - ./assets/activities-toc.js
     hide_footer_links: false
     hide_toc: false
     favicon: ./assets/favicon.ico
     logo_text: "EECS 245: Mathematics for Machine Learning"
     folders: true
+  parts:
+    primary_sidebar_footer: ./assets/activities-toc-loader.md
   actions:
     - title: "Course Website"
       url: https://eecs245.org

@@ -141,6 +141,83 @@ footer {
     max-width: 240px !important;
 }
 
+.bd-toc details[data-activities-toc] {
+  margin-top: 0.75rem;
+}
+
+/* Ghost heading for activity TOC entries - visually hidden but maintains anchor for TOC navigation */
+.activity-toc-heading,
+h1.activity-toc-heading,
+h2.activity-toc-heading,
+h3.activity-toc-heading,
+h4.activity-toc-heading,
+h5.activity-toc-heading,
+h6.activity-toc-heading,
+span.activity-toc-heading,
+[id^="activity-"]:is(h1, h2, h3, h4, h5, h6, span):not(.admonition):not(.admonition-title) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Bold all TOC links */
+.bd-toc li a,
+li.myst-outline-item a {
+  font-weight: 500 !important;
+}
+
+/* Activity TOC link styling - override Tailwind utility classes */
+.bd-toc li a[href^="#activity-"],
+.bd-toc [data-activities-toc] a,
+#activities-toc a,
+li.myst-outline-item a[href^="#activity-"] {
+  color: #1f8f3a !important;
+  font-weight: 600 !important;
+  position: relative;
+}
+
+/* Add ✍️ after activity TOC links */
+li.myst-outline-item a[href^="#activity-"]::after {
+  content: ' ✍️';
+  font-size: 1em;
+  margin-left: 0.2em;
+  vertical-align: middle;
+}
+
+.bd-toc li a[href^="#activity-"]:hover,
+.bd-toc li a[href^="#activity-"]:focus,
+li.myst-outline-item a[href^="#activity-"]:hover,
+li.myst-outline-item a[href^="#activity-"]:focus {
+  background-color: #d4edda !important;
+  color: #155724 !important;
+  border-radius: 0.2em;
+  text-decoration: none !important;
+}
+
+/* Override Tailwind classes on the parent li for activity items */
+li.myst-outline-item:has(a[href^="#activity-"]) {
+  background-color: transparent !important;
+  border-left-color: #1f8f3a !important;
+}
+
+li.myst-outline-item:has(a[href^="#activity-"]):hover {
+  background-color: #d4edda !important;
+  border-left-color: #155724 !important;
+}
+
+li.myst-outline-item.myst-outline-item-active:has(a[href^="#activity-"]),
+li.myst-outline-item:has(a[href^="#activity-"]).myst-outline-item-active {
+  background-color: #c3e6cb !important;
+  border-left-color: #155724 !important;
+}
+
 /* Widen reading column on large screens */
 @media (min-width: 992px) {
   .bd-page-width {
