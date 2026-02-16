@@ -1,0 +1,9 @@
+In /Users/surajrampure/Desktop/245/notes, place all drafted activity solutions back into notebooks from activity_solution_drafts/**/*.md.
+
+For each draft file:
+- Read frontmatter: notebook, activity, cell_index.
+- Copy only the content under “## Draft Solution”.
+- Insert it into the matching activity in the target .ipynb as a “::{seealso} Solution” dropdown in the correct activity section.
+- Do not modify other activities.
+- Preserve notebook content/style.
+- At the end, list every notebook/activity updated.
