@@ -199,7 +199,7 @@ def draw_equations(equations, plotting_range=None):
             
             equation_str = " ".join(terms) + " = 0"
             
-            # Only plot if at least one of a, b, c is nonzero
+            # Only plot if at least one of a, b, c is non-zero
             if c != 0:
                 Z = (-d - a*X - b*Y) / c
                 fig.add_trace(go.Surface(

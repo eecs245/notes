@@ -44,6 +44,6 @@ A vector orthogonal to both can be the cross product:
 \begin{bmatrix}1\\-2\\4\end{bmatrix}\times\begin{bmatrix}3\\-1\\9\end{bmatrix}
 =\begin{bmatrix}-14\\3\\5\end{bmatrix}.
 \]
-Any nonzero scalar multiple also works.
+Any non-zero scalar multiple also works.
 
 Geometrically in \(\mathbb R^3\), this vector is normal (perpendicular) to the plane spanned by the two given vectors.

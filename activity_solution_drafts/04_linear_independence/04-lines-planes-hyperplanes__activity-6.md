@@ -24,11 +24,11 @@ A standard identity:
 \[
 (\vec u\times\vec v)\cdot\vec w = \det[\vec u\ \vec v\ \vec w].
 \]
-The determinant is nonzero iff the three column vectors are linearly independent.
+The determinant is non-zero iff the three column vectors are linearly independent.
 
 So:
-- If \((\vec u\times\vec v)\cdot\vec w\ne 0\), then the determinant is nonzero, so \(\vec u,\vec v,\vec w\) are linearly independent.
-- If \(\vec u,\vec v,\vec w\) are linearly independent, determinant is nonzero, so \((\vec u\times\vec v)\cdot\vec w\ne 0\).
+- If \((\vec u\times\vec v)\cdot\vec w\ne 0\), then the determinant is non-zero, so \(\vec u,\vec v,\vec w\) are linearly independent.
+- If \(\vec u,\vec v,\vec w\) are linearly independent, determinant is non-zero, so \((\vec u\times\vec v)\cdot\vec w\ne 0\).
 
 Hence
 \[

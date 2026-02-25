@@ -31,7 +31,7 @@ In the case of $\vec x = \begin{bmatrix} 12 \\ 5 \end{bmatrix}$, the $L_1$ norm 
 \Rightarrow
 \|\vec y\|_1=1,\ \|\vec y\|_2=1.
 \]
-(Any vector with exactly one nonzero component works.)
+(Any vector with exactly one non-zero component works.)
 
 2. Trying to find \(\vec z\) with \(\|\vec z\|_1<\|\vec z\|_2\) fails: this cannot happen. In fact,
 \[
