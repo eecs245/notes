@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 520" font-family="'Times New Roman', Georgia, serif">
+
+  <!-- Left Diamond -->
+  <polygon points="215,55 370,255 215,455 60,255" fill="none" stroke="#2196F3" stroke-width="1.5"/>
+  <line x1="60" y1="255" x2="370" y2="255" stroke="#2196F3" stroke-width="1.5"/>
+
+  <!-- Right Diamond (rotated ~15° clockwise) -->
+  <polygon points="792,62 890,295 688,448 590,215" fill="none" stroke="#2196F3" stroke-width="1.5"/>
+  <line x1="590" y1="215" x2="890" y2="295" stroke="#2196F3" stroke-width="1.5"/>
+
+  <!-- ===== LEFT DIAMOND LABELS ===== -->
+
+  <!-- colsp(A^T) — top-left label -->
+  <text x="30" y="44" font-size="20">colsp(<tspan font-style="italic">A</tspan><tspan font-size="14" baseline-shift="super">T</tspan>)</text>
+
+  <!-- Row space — blue bold, upper half -->
+  <text x="215" y="148" text-anchor="middle" font-size="22" fill="#2196F3" font-weight="bold">Row space</text>
+
+  <!-- all A^T y — upper half -->
+  <text x="215" y="178" text-anchor="middle" font-size="18" font-style="italic">all A<tspan font-size="12" baseline-shift="super" font-style="normal">T</tspan>y</text>
+
+  <!-- dim r — left side, upper -->
+  <text x="12" y="158" font-size="16">dim <tspan font-style="italic">r</tspan></text>
+
+  <!-- R^d — bold, near left vertex -->
+  <text x="138" y="272" font-size="22" font-weight="bold">R<tspan font-size="15" baseline-shift="super" font-style="italic" font-weight="normal">d</tspan></text>
+
+  <!-- dim d − r — left side, lower -->
+  <text x="12" y="358" font-size="16">dim <tspan font-style="italic">d</tspan> − <tspan font-style="italic">r</tspan></text>
+
+  <!-- x in / Nullspace — blue bold, lower half -->
+  <text x="215" y="330" text-anchor="middle" font-size="20" fill="#2196F3" font-weight="bold"><tspan font-style="italic">x</tspan> in</text>
+  <text x="215" y="358" text-anchor="middle" font-size="22" fill="#2196F3" font-weight="bold">Nullspace</text>
+
+  <!-- Ax = 0 — lower half -->
+  <text x="215" y="388" text-anchor="middle" font-size="18" font-style="italic">Ax = 0</text>
+
+  <!-- nullsp(A) — below diamond -->
+  <text x="168" y="482" font-size="20">nullsp(<tspan font-style="italic">A</tspan>)</text>
+
+  <!-- Perpendicular — right of left diamond -->
+  <text x="388" y="234" font-size="16">Perpendicular</text>
+  <text x="388" y="258" font-size="16" font-style="italic">x<tspan font-size="11" baseline-shift="super" font-style="normal">T</tspan>(A<tspan font-size="11" baseline-shift="super" font-style="normal">T</tspan>y) = 0</text>
+
+  <!-- ===== RIGHT DIAMOND LABELS ===== -->
+
+  <!-- colsp(A) — top-right label -->
+  <text x="828" y="48" font-size="20">colsp(<tspan font-style="italic">A</tspan>)</text>
+
+  <!-- Column space — blue bold, upper half -->
+  <text x="757" y="145" text-anchor="middle" font-size="22" fill="#2196F3" font-weight="bold">Column space</text>
+
+  <!-- all Ax — upper half -->
+  <text x="757" y="173" text-anchor="middle" font-size="18" font-style="italic">all Ax</text>
+
+  <!-- dim r — right side, upper -->
+  <text x="908" y="162" font-size="16">dim <tspan font-style="italic">r</tspan></text>
+
+  <!-- R^n — bold, near right edge -->
+  <text x="845" y="268" font-size="22" font-weight="bold">R<tspan font-size="15" baseline-shift="super" font-style="italic" font-weight="normal">n</tspan></text>
+
+  <!-- dim n − r — right side, lower -->
+  <text x="900" y="368" font-size="16">dim <tspan font-style="italic">n</tspan> − <tspan font-style="italic">r</tspan></text>
+
+  <!-- Perpendicular — left of right diamond -->
+  <text x="572" y="268" text-anchor="end" font-size="16">Perpendicular</text>
+  <text x="572" y="292" text-anchor="end" font-size="16" font-style="italic">y<tspan font-size="11" baseline-shift="super" font-style="normal">T</tspan>(Ax) = 0</text>
+
+  <!-- y in / Nullspace of A^T — blue bold, lower half -->
+  <text x="720" y="342" text-anchor="middle" font-size="20" fill="#2196F3" font-weight="bold"><tspan font-style="italic">y</tspan> in</text>
+  <text x="720" y="368" text-anchor="middle" font-size="20" fill="#2196F3" font-weight="bold">Nullspace of <tspan font-style="italic">A</tspan><tspan font-size="13" baseline-shift="super" font-style="normal">T</tspan></text>
+
+  <!-- A^T y = 0 — lower half -->
+  <text x="720" y="396" text-anchor="middle" font-size="18" font-style="italic">A<tspan font-size="12" baseline-shift="super" font-style="normal">T</tspan>y = 0</text>
+
+  <!-- nullsp(A^T) — below diamond -->
+  <text x="720" y="478" font-size="20">nullsp(<tspan font-style="italic">A</tspan><tspan font-size="14" baseline-shift="super">T</tspan>)</text>
+
+</svg>
