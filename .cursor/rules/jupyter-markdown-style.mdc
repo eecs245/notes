@@ -1,0 +1,11 @@
+---
+description: Write natural Markdown text in Jupyter markdown cells
+globs:
+  - "**/*.ipynb"
+alwaysApply: false
+---
+
+- When writing content for Jupyter Notebook markdown cells, default to normal paragraph Markdown.
+- Do not prepend `#` to each generated line.
+- Only use Markdown headings (`#`, `##`, etc.) when the user explicitly asks for headings.
+- If editing an existing markdown cell, preserve its current heading structure unless asked to change it.
