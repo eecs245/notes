@@ -47,6 +47,7 @@ project:
         - file: 06_linear_transformations_and_projections/02-inverses.ipynb
         - file: 06_linear_transformations_and_projections/03-projecting-onto-column-space.ipynb
         - file: 06_linear_transformations_and_projections/04-complete-solution.ipynb
+        - file: 06_linear_transformations_and_projections/05-gram-schmidt-process.ipynb
     - title: "Chapter 7: Regression using Linear Algebra"
       children:
         - file: 07_regression_using_linear_algebra/01-regression-using-linear-algebra.ipynb
