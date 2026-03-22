@@ -546,19 +546,25 @@ def show_gd_path_surface(x1_start=-0.5, x2_start=1, step_size=0.1, iterations=10
                 gridcolor='#f0f0f0',
                 zerolinecolor='#f0f0f0',
                 title_font=dict(family="Palatino"),
-                tickfont=dict(family="Palatino")
+                tickfont=dict(family="Palatino", size=10),
+                showbackground=True, showline=True, linecolor="black", linewidth=1,
+                backgroundcolor="white"
             ),
             yaxis=dict(
                 gridcolor='#f0f0f0',
                 zerolinecolor='#f0f0f0',
                 title_font=dict(family="Palatino"),
-                tickfont=dict(family="Palatino")
+                tickfont=dict(family="Palatino", size=10),
+                showbackground=True, showline=True, linecolor="black", linewidth=1,
+                backgroundcolor="white"
             ),
             zaxis=dict(
                 gridcolor='#f0f0f0',
                 zerolinecolor='#f0f0f0',
                 title_font=dict(family="Palatino"),
-                tickfont=dict(family="Palatino")
+                tickfont=dict(family="Palatino", size=10),
+                showbackground=True, showline=True, linecolor="black", linewidth=1,
+                backgroundcolor="white"
             ),
         ),
         width=800,
