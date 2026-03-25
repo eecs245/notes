@@ -301,7 +301,7 @@ def show_gd_path_contour(w1_start=-0.5, w2_start=1, step_size=0.1, iterations=10
         marker=dict(size=8, color='gold')
     ))
 
-    title = f'<b><span style="color:gold">Gradient Descent Path</span></b> from ({w1_start}, {w2_start})'
+    title = f'<b><span style="color:gold">Gradient Descent Path</span></b> from ({w1_start}, {w2_start}), Step Size = {step_size}'
 
 
     # Update layout
@@ -362,11 +362,12 @@ def show_gd_path_surface(w1_start=-0.5, w2_start=1, step_size=0.1, iterations=10
         marker=dict(size=8, color='gold')
     ))
 
-    title = f'<b>Gradient Descent Path</b> from ({w1_start}, {w2_start})'
+    title = f'<b>Gradient Descent Path</b> from ({w1_start}, {w2_start}), Step Size = {step_size}'
 
 
     # Update layout
     fig.update_layout(
+        title=title,
         # title='$$f(w_1, w_2) = 3  \sin(2 w_1) \cos(2 w_2) + w_1^2 + w_2^2$$',
         scene=dict(
             xaxis_title='w1',

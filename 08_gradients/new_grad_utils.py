@@ -413,23 +413,51 @@ def show_surface_and_contour_side_by_side(
 
     return subplot_fig
 
-def show_gd_path_contour(x1_start=-0.5, x2_start=1, step_size=0.1, iterations=10):
-    # Define the function and its derivatives
-    def f(x1, x2):
-        return 3 * np.sin(2*x1) * np.cos(2*x2) + x1**2 + x2**2
+def _gd_example_function(x1, x2):
+    return 3 * np.sin(2 * x1) * np.cos(2 * x2) + x1**2 + x2**2
 
-    def dfx1(x1, x2):
-        return 6 * np.cos(2 * x1) * np.cos(2 * x2) + 2 * x1
 
-    def dfx2(x1, x2):
-        return -6 * np.sin(2 * x1) * np.sin(2 * x2) + 2 * x2
+def _gd_example_gradients(x1, x2):
+    grad_x = 6 * np.cos(2 * x1) * np.cos(2 * x2) + 2 * x1
+    grad_y = -6 * np.sin(2 * x1) * np.sin(2 * x2) + 2 * x2
+    return grad_x, grad_y
 
-    # Create grid for contour plot
-    lim = 2
-    x1_range = np.linspace(-lim, lim, 100)
-    x2_range = np.linspace(-lim, lim, 100)
+
+def _gd_example_grid(lim=2, resolution=100):
+    x1_range = np.linspace(-lim, lim, resolution)
+    x2_range = np.linspace(-lim, lim, resolution)
     x1_grid, x2_grid = np.meshgrid(x1_range, x2_range)
-    z_values = f(x1_grid, x2_grid)
+    z_values = _gd_example_function(x1_grid, x2_grid)
+    return x1_range, x2_range, x1_grid, x2_grid, z_values
+
+
+def _compute_gd_example_path(x1_start, x2_start, step_size, iterations):
+    x1, x2 = x1_start, x2_start
+    path_x, path_y = [x1], [x2]
+    path_z = [_gd_example_function(x1, x2)]
+
+    for _ in range(iterations):
+        grad_x, grad_y = _gd_example_gradients(x1, x2)
+        x1 = x1 - step_size * grad_x
+        x2 = x2 - step_size * grad_y
+        path_x.append(x1)
+        path_y.append(x2)
+        path_z.append(_gd_example_function(x1, x2))
+
+    return path_x, path_y, path_z
+
+
+def _gd_path_title(x1_start, x2_start, iteration=None, step_size=None):
+    base_title = f'<b><span style="color:gold">Gradient Descent Path</span></b> from ({x1_start}, {x2_start})'
+    if step_size is not None:
+        base_title += f', Step Size = {step_size}'
+    if iteration is None:
+        return base_title
+    return f'{base_title}<br><span style="font-size: 0.85em;">Iteration {iteration}</span>'
+
+
+def show_gd_path_contour(x1_start=-0.5, x2_start=1, step_size=0.1, iterations=10):
+    x1_range, x2_range, _, _, z_values = _gd_example_grid()
 
     # Initialize figure
     fig = go.Figure(data=[
@@ -440,16 +468,8 @@ def show_gd_path_contour(x1_start=-0.5, x2_start=1, step_size=0.1, iterations=10
         )
     ])
 
-    # Perform gradient descent if enabled
-    x1, x2 = x1_start, x2_start
-    path_x, path_y = [x1], [x2]
-    
-    for _ in range(iterations):
-        grad_x, grad_y = dfx1(x1, x2), dfx2(x1, x2)
-        x1, x2 = x1 - step_size * grad_x, x2 - step_size * grad_y
-        path_x.append(x1)
-        path_y.append(x2)
-    
+    path_x, path_y, _ = _compute_gd_example_path(x1_start, x2_start, step_size, iterations)
+
     # Add descent path to the plot
     fig.add_trace(go.Scatter(
         x=path_x, y=path_y, mode='lines+markers',
@@ -457,7 +477,7 @@ def show_gd_path_contour(x1_start=-0.5, x2_start=1, step_size=0.1, iterations=10
         marker=dict(size=8, color='gold'),
     ))
 
-    title = f'<b><span style="color:gold">Gradient Descent Path</span></b> from ({x1_start}, {x2_start})'
+    title = _gd_path_title(x1_start, x2_start, step_size=step_size)
 
     # Update layout with Palatino font
     fig.update_layout(
@@ -482,23 +502,92 @@ def show_gd_path_contour(x1_start=-0.5, x2_start=1, step_size=0.1, iterations=10
     
     return fig
 
+
+def show_gd_path_contour_slider(x1_start=-0.5, x2_start=1, step_size=0.1, iterations=10):
+    x1_range, x2_range, _, _, z_values = _gd_example_grid()
+    path_x, path_y, _ = _compute_gd_example_path(x1_start, x2_start, step_size, iterations)
+
+    fig = go.Figure(
+        data=[
+            go.Contour(
+                z=z_values,
+                x=x1_range,
+                y=x2_range,
+                colorscale='RdBu_r',
+                showscale=False,
+                contours=dict(showlabels=True, labelfont=dict(size=12, color='white')),
+            ),
+            go.Scatter(
+                x=[path_x[0]],
+                y=[path_y[0]],
+                mode='lines+markers',
+                line=dict(color='gold', width=3),
+                marker=dict(size=8, color='gold'),
+                showlegend=False,
+            ),
+            go.Scatter(
+                x=[path_x[0]],
+                y=[path_y[0]],
+                mode='markers',
+                marker=dict(color='orange', size=12),
+                showlegend=False,
+            ),
+        ]
+    )
+
+    slider_steps = []
+    for iteration_idx in range(len(path_x)):
+        slider_steps.append(
+            dict(
+                method='update',
+                args=[
+                    {
+                        'x': [path_x[:iteration_idx + 1], [path_x[iteration_idx]]],
+                        'y': [path_y[:iteration_idx + 1], [path_y[iteration_idx]]],
+                    },
+                    {
+                        'title': _gd_path_title(x1_start, x2_start, iteration=iteration_idx, step_size=step_size),
+                    },
+                    [1, 2],
+                ],
+                label=str(iteration_idx),
+            )
+        )
+
+    fig.update_layout(
+        title=_gd_path_title(x1_start, x2_start, iteration=0, step_size=step_size),
+        xaxis_title='x1',
+        yaxis_title='x2',
+        width=800,
+        height=700,
+        margin=dict(l=65, r=50, b=65, t=90),
+        font=dict(family='Palatino'),
+        xaxis=dict(
+            tickfont=dict(family='Palatino', size=10),
+            title_font=dict(family='Palatino'),
+        ),
+        yaxis=dict(
+            tickfont=dict(family='Palatino', size=10),
+            title_font=dict(family='Palatino'),
+        ),
+        sliders=[
+            dict(
+                active=0,
+                currentvalue={'prefix': 'Iteration: '},
+                pad={'t': 35},
+                steps=slider_steps,
+            )
+        ],
+        paper_bgcolor='white',
+        plot_bgcolor='white',
+        showlegend=False,
+    )
+
+    return fig
+
+
 def show_gd_path_surface(x1_start=-0.5, x2_start=1, step_size=0.1, iterations=10):
-    # Define the function and its derivatives
-    def f(x1, x2):
-        return 3 * np.sin(2*x1) * np.cos(2*x2) + x1**2 + x2**2
-
-    def dfx1(x1, x2):
-        return 6 * np.cos(2 * x1) * np.cos(2 * x2) + 2 * x1
-
-    def dfx2(x1, x2):
-        return -6 * np.sin(2 * x1) * np.sin(2 * x2) + 2 * x2
-
-    # Create grid for contour plot
-    lim = 2
-    x1_range = np.linspace(-lim, lim, 100)
-    x2_range = np.linspace(-lim, lim, 100)
-    x1_grid, x2_grid = np.meshgrid(x1_range, x2_range)
-    z_values = f(x1_grid, x2_grid)
+    x1_range, x2_range, x1_grid, x2_grid, z_values = _gd_example_grid()
 
     # Initialize figure
     fig = go.Figure(data=[
@@ -513,17 +602,7 @@ def show_gd_path_surface(x1_start=-0.5, x2_start=1, step_size=0.1, iterations=10
         )
     ])
 
-    # Perform gradient descent if enabled
-    x1, x2 = x1_start, x2_start
-    path_x, path_y = [x1], [x2]
-    path_z = [f(x1, x2)]
-    
-    for _ in range(iterations):
-        grad_x, grad_y = dfx1(x1, x2), dfx2(x1, x2)
-        x1, x2 = x1 - step_size * grad_x, x2 - step_size * grad_y
-        path_x.append(x1)
-        path_y.append(x2)
-        path_z.append(f(x1, x2))
+    path_x, path_y, path_z = _compute_gd_example_path(x1_start, x2_start, step_size, iterations)
     
     # Add descent path to the plot
     fig.add_trace(go.Scatter3d(
@@ -532,10 +611,11 @@ def show_gd_path_surface(x1_start=-0.5, x2_start=1, step_size=0.1, iterations=10
         marker=dict(size=8, color='gold')
     ))
 
-    title = f'<b>Gradient Descent Path</b> from ({x1_start}, {x2_start})'
+    title = _gd_path_title(x1_start, x2_start, step_size=step_size)
 
     # Update layout with Palatino font, white background, and custom gridlines
     fig.update_layout(
+        title=title,
         scene=dict(
             xaxis_title='x1',
             yaxis_title='x2',
