@@ -49,7 +49,7 @@ def minimizing_animation(w0, alpha):
     w = w0
     ws = []
     dfws = []
-    for i in range(50):
+    for t in range(50):
         ws.append(w)
         dfws.append(df(w))
         w = w - alpha * df(w)
@@ -59,8 +59,8 @@ def minimizing_animation(w0, alpha):
     grad_anim = go.Figure(
         data=[fig.data[0], go.Scatter(x=[ws[0]], y=[f(ws[0])], marker={'size': 20}, showlegend=False)],
         frames=[
-            go.Frame(data=[fig.data[0], go.Scatter(x=[ws[i]], y=[f(ws[i])], marker={'size': 20}, showlegend=False)])
-            for i in range(50)
+            go.Frame(data=[fig.data[0], go.Scatter(x=[ws[t]], y=[f(ws[t])], marker={'size': 20}, showlegend=False)])
+            for t in range(50)
         ],
         layout=go.Layout(updatemenus=[dict(
             type="buttons",
