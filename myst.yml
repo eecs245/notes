@@ -62,10 +62,11 @@ project:
     - title: "Chapter 9: Eigenvalues and Eigenvectors"
       children:
         - file: 09_eigenvalues_and_eigenvectors/01-eigenvalues-eigenvectors.ipynb
-        - file: 09_eigenvalues_and_eigenvectors/02-rayleigh-quotient.ipynb
+        - file: 09_eigenvalues_and_eigenvectors/02-characteristic-polynomial.ipynb
         - file: 09_eigenvalues_and_eigenvectors/03-markov-chains-adjacency-matrices.ipynb
         - file: 09_eigenvalues_and_eigenvectors/04-multiplicities-diagonalization.ipynb
         - file: 09_eigenvalues_and_eigenvectors/05-symmetric-matrices-spectral-theorem.ipynb
+        - file: 09_eigenvalues_and_eigenvectors/06-rayleigh-quotient.ipynb
     - title: "Chapter 10: Singular Value Decomposition"
       children:
         - file: 10_singular_value_decomposition/01-computing-svd.ipynb
