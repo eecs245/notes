@@ -14,6 +14,8 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_PDF = ROOT / "exports" / "notes.pdf"
 SITE_ROOT = ROOT / "_build" / "site"
 SITE_PDF = ROOT / "_build" / "site" / "exports" / "notes.pdf"
+CUSTOM_DOMAIN = ROOT / "CNAME"
+SITE_CNAME = SITE_ROOT / "CNAME"
 
 
 def advertised_pdf_paths() -> list[Path]:
@@ -64,6 +66,9 @@ def main() -> int:
         text=True,
         check=True,
     )
+    if CUSTOM_DOMAIN.exists():
+        shutil.copy2(CUSTOM_DOMAIN, SITE_CNAME)
+        print("Copied", CUSTOM_DOMAIN, "to", SITE_CNAME)
     if OUTPUT_PDF.exists():
         SITE_PDF.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(OUTPUT_PDF, SITE_PDF)
