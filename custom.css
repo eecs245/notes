@@ -55,6 +55,17 @@
   --content-max-width: 1120px;
 }
 
+html[data-theme="dark"] {
+  --notes-dark-accent: #f3c969;
+  --notes-dark-accent-strong: #ffd978;
+  --notes-dark-accent-soft: rgba(243, 201, 105, 0.16);
+  --notes-dark-accent-border: rgba(243, 201, 105, 0.34);
+  --notes-dark-activity: #d8bf7a;
+  --notes-dark-activity-soft: rgba(216, 191, 122, 0.16);
+  --notes-dark-activity-strong: #f0dca0;
+  --notes-dark-surface: #221d18;
+}
+
 /* Edward Tufte's font styles */
 body {
     font-family: 'Avenir', 'Helvetica Neue', Helvetica, Arial, system-ui, serif;
@@ -94,15 +105,71 @@ div.bd-content a:hover:not(nav a):not(.sidebar a) {
 /* Dark mode: content links only (pydata-sphinx-theme / Jupyter Book) */
 html[data-theme="dark"] .bd-main .bd-content a:not(.headerlink):not(.toclink),
 html[data-theme="dark"] .bd-main .bd-content article a:not(.headerlink):not(.toclink) {
-  color: #ffcb05 !important;
+  color: var(--notes-dark-accent) !important;
 }
 
 /* Hover/focus */
 html[data-theme="dark"] .bd-main .bd-content a:not(.headerlink):not(.toclink):hover,
 html[data-theme="dark"] .bd-main .bd-content a:not(.headerlink):not(.toclink):focus {
   color: #000 !important;
-  background: #ffcb05 !important;
+  background: var(--notes-dark-accent-strong) !important;
   text-decoration: none;
+}
+
+/* Dark mode UI accents */
+html[data-theme="dark"] .bd-header,
+html[data-theme="dark"] .bd-sidebar,
+html[data-theme="dark"] .bd-sidebar-primary,
+html[data-theme="dark"] .bd-sidebar-secondary,
+html[data-theme="dark"] .bd-toc {
+  --color-link: var(--notes-dark-accent);
+  --color-link-hover: var(--notes-dark-accent-strong);
+}
+
+html[data-theme="dark"] .bd-header .navbar-nav > li > a:hover,
+html[data-theme="dark"] .bd-header .navbar-nav > li > a:focus,
+html[data-theme="dark"] .bd-header .navbar-nav > li.current > a,
+html[data-theme="dark"] .bd-header a:hover,
+html[data-theme="dark"] .bd-header a:focus,
+html[data-theme="dark"] .bd-sidebar a:hover,
+html[data-theme="dark"] .bd-sidebar a:focus,
+html[data-theme="dark"] .bd-toc a:hover,
+html[data-theme="dark"] .bd-toc a:focus {
+  color: var(--notes-dark-accent-strong) !important;
+}
+
+html[data-theme="dark"] .search-button,
+html[data-theme="dark"] .search-button__button,
+html[data-theme="dark"] .bd-search .form-control,
+html[data-theme="dark"] .bd-search input {
+  border-color: var(--notes-dark-accent-border) !important;
+}
+
+html[data-theme="dark"] .search-button:focus-within,
+html[data-theme="dark"] .search-button__button:hover,
+html[data-theme="dark"] .search-button__button:focus,
+html[data-theme="dark"] .bd-search .form-control:focus,
+html[data-theme="dark"] .bd-search input:focus {
+  box-shadow: 0 0 0 0.18rem var(--notes-dark-accent-soft) !important;
+  border-color: var(--notes-dark-accent) !important;
+}
+
+html[data-theme="dark"] .bd-sidebar .active,
+html[data-theme="dark"] .bd-sidebar .current > a,
+html[data-theme="dark"] .bd-sidebar .current-page,
+html[data-theme="dark"] .bd-toc .active,
+html[data-theme="dark"] li.myst-outline-item.myst-outline-item-active {
+  color: var(--notes-dark-accent-strong) !important;
+  background-color: var(--notes-dark-accent-soft) !important;
+  border-left-color: var(--notes-dark-accent) !important;
+}
+
+html[data-theme="dark"] .bd-toc .toc-entry > .nav-link.active,
+html[data-theme="dark"] .bd-toc nav a.active,
+html[data-theme="dark"] li.myst-outline-item-active > a {
+  color: var(--notes-dark-accent-strong) !important;
+  border-left-color: var(--notes-dark-accent) !important;
+  background-color: var(--notes-dark-accent-soft) !important;
 }
 
 /* Remove navigation buttons */
@@ -191,6 +258,13 @@ li.myst-outline-item a[href^="#activity-"] {
   position: relative;
 }
 
+html[data-theme="dark"] .bd-toc li a[href^="#activity-"],
+html[data-theme="dark"] .bd-toc [data-activities-toc] a,
+html[data-theme="dark"] #activities-toc a,
+html[data-theme="dark"] li.myst-outline-item a[href^="#activity-"] {
+  color: var(--notes-dark-activity) !important;
+}
+
 /* Add ✍️ after activity TOC links */
 li.myst-outline-item a[href^="#activity-"]::after {
   content: ' ✍️';
@@ -209,6 +283,16 @@ li.myst-outline-item a[href^="#activity-"]:focus {
   text-decoration: none !important;
 }
 
+html[data-theme="dark"] .bd-toc li a[href^="#activity-"]:hover,
+html[data-theme="dark"] .bd-toc li a[href^="#activity-"]:focus,
+html[data-theme="dark"] .bd-toc [data-activities-toc] a:hover,
+html[data-theme="dark"] .bd-toc [data-activities-toc] a:focus,
+html[data-theme="dark"] li.myst-outline-item a[href^="#activity-"]:hover,
+html[data-theme="dark"] li.myst-outline-item a[href^="#activity-"]:focus {
+  background-color: var(--notes-dark-activity-soft) !important;
+  color: var(--notes-dark-activity-strong) !important;
+}
+
 /* Override Tailwind classes on the parent li for activity items */
 li.myst-outline-item:has(a[href^="#activity-"]) {
   background-color: transparent !important;
@@ -224,6 +308,21 @@ li.myst-outline-item.myst-outline-item-active:has(a[href^="#activity-"]),
 li.myst-outline-item:has(a[href^="#activity-"]).myst-outline-item-active {
   background-color: #c3e6cb !important;
   border-left-color: #155724 !important;
+}
+
+html[data-theme="dark"] li.myst-outline-item:has(a[href^="#activity-"]) {
+  border-left-color: transparent !important;
+}
+
+html[data-theme="dark"] li.myst-outline-item:has(a[href^="#activity-"]):hover {
+  background-color: var(--notes-dark-activity-soft) !important;
+  border-left-color: var(--notes-dark-activity) !important;
+}
+
+html[data-theme="dark"] li.myst-outline-item.myst-outline-item-active:has(a[href^="#activity-"]),
+html[data-theme="dark"] li.myst-outline-item:has(a[href^="#activity-"]).myst-outline-item-active {
+  background-color: rgba(216, 191, 122, 0.22) !important;
+  border-left-color: var(--notes-dark-activity) !important;
 }
 
 /* Widen reading column on large screens */

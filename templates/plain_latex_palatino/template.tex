@@ -24,6 +24,11 @@
 
 [-IMPORTS-]
 
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}%
+  \setlength{\parskip}{0pt}%
+}
+
 \definecolor{MichiganBlue}{HTML}{00274C}
 \definecolor{MichiganMaize}{HTML}{FFCB05}
 \definecolor{NoteBg}{HTML}{EFF6FF}
@@ -67,24 +72,7 @@
   {\normalfont}
   {}
   {0pt}
-  {%
-    \vspace*{-1.1em}%
-    \begin{tcolorbox}[
-      enhanced,
-      boxrule=0pt,
-      sharp corners,
-      colback=MichiganBlue,
-      left=18pt,
-      right=18pt,
-      top=18pt,
-      bottom=18pt
-    ]
-      {\color{MichiganMaize}\bfseries\Large Chapter \thechapter}\par
-      \vspace{5pt}
-      {\color{white}\bfseries\fontsize{26}{30}\selectfont #1}
-    \end{tcolorbox}
-    \vspace{-0.35em}
-  }
+  {\color{MichiganBlue}\bfseries\fontsize{26}{30}\selectfont}
 \titlespacing*{\chapter}{0pt}{0pt}{1.0em}
 
 \titleformat{\section}

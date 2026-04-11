@@ -3,6 +3,8 @@ project:
   id: d2c12083-8095-432e-b7b0-07c9d956add7
   title: EECS 245 Course Notes
   description: Course notes for EECS 245 at the University of Michigan.
+  authors:
+    - name: Suraj Rampure
   github: eecs245/notes
   plugins:
     - type: javascript
@@ -80,7 +82,7 @@ project:
   # To autogenerate a Table of Contents, run "myst init --write-toc"
   exports:
     - format: pdf
-      template: plain_latex
+      template: ./templates/plain_latex_palatino
       output: exports/notes.pdf
 site:
   template: book-theme
@@ -98,6 +100,8 @@ site:
   parts:
     primary_sidebar_footer: ./assets/activities-toc-loader.md
   actions:
+    - title: "Download as PDF"
+      url: ./exports/notes.pdf
     - title: "Course Website"
       url: https://eecs245.org
     - title: "Feedback?"
