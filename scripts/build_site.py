@@ -58,7 +58,12 @@ def main() -> int:
             check=True,
         )
 
-    subprocess.run(["npx", "myst", "build", "--site"], cwd=ROOT, text=True, check=True)
+    subprocess.run(
+        ["npx", "myst", "build", "--site", "--force"],
+        cwd=ROOT,
+        text=True,
+        check=True,
+    )
     if OUTPUT_PDF.exists():
         SITE_PDF.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(OUTPUT_PDF, SITE_PDF)
