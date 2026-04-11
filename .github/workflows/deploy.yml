@@ -34,14 +34,21 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18.x
-      - name: Install MyST Markdown
-        run: npm install -g mystmd
-      - name: Build HTML Assets
-        run: myst build --html
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Node dependencies
+        run: npm ci
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+      - name: Build PDF
+        run: python scripts/build_pdf.py
+      - name: Build site
+        run: python scripts/build_site.py --skip-pdf
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './_build/html'
+          path: './_build/site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
