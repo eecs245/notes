@@ -12,8 +12,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_PDF = ROOT / "exports" / "notes.pdf"
-SITE_ROOT = ROOT / "_build" / "site"
-SITE_PDF = ROOT / "_build" / "site" / "exports" / "notes.pdf"
+SITE_ROOT = ROOT / "_build" / "html"
+SITE_PDF = ROOT / "_build" / "html" / "exports" / "notes.pdf"
 CUSTOM_DOMAIN = ROOT / "CNAME"
 SITE_CNAME = SITE_ROOT / "CNAME"
 
@@ -61,7 +61,7 @@ def main() -> int:
         )
 
     subprocess.run(
-        ["npx", "myst", "build", "--site", "--force"],
+        ["npx", "myst", "build", "--html", "--force", "--ci"],
         cwd=ROOT,
         text=True,
         check=True,
