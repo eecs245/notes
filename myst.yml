@@ -3,8 +3,6 @@ project:
   id: d2c12083-8095-432e-b7b0-07c9d956add7
   title: EECS 245 Course Notes
   description: Course notes for EECS 245 at the University of Michigan.
-  authors:
-    - name: Suraj Rampure
   github: eecs245/notes
   plugins:
     - type: javascript
