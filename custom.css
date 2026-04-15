@@ -108,21 +108,21 @@ div.bd-content a:hover:not(nav a):not(.sidebar a) {
 /* Dark mode: content links only (pydata-sphinx-theme / Jupyter Book) */
 :is(html.dark, html[data-theme="dark"]) .bd-main .bd-content a:not(.headerlink):not(.toclink),
 :is(html.dark, html[data-theme="dark"]) .bd-main .bd-content article a:not(.headerlink):not(.toclink),
-:is(html.dark, html[data-theme="dark"]) main.article article.content a.link,
-:is(html.dark, html[data-theme="dark"]) article.content a.link,
-:is(html.dark, html[data-theme="dark"]) .article.content a.link {
+:is(html.dark, html[data-theme="dark"]) main.article article.content a[href]:not(nav a),
+:is(html.dark, html[data-theme="dark"]) article.content a[href]:not(nav a),
+:is(html.dark, html[data-theme="dark"]) .article.content a[href]:not(nav a) {
   color: var(--notes-dark-accent) !important;
 }
 
 /* Hover/focus */
 :is(html.dark, html[data-theme="dark"]) .bd-main .bd-content a:not(.headerlink):not(.toclink):hover,
 :is(html.dark, html[data-theme="dark"]) .bd-main .bd-content a:not(.headerlink):not(.toclink):focus,
-:is(html.dark, html[data-theme="dark"]) main.article article.content a.link:hover,
-:is(html.dark, html[data-theme="dark"]) main.article article.content a.link:focus,
-:is(html.dark, html[data-theme="dark"]) article.content a.link:hover,
-:is(html.dark, html[data-theme="dark"]) article.content a.link:focus,
-:is(html.dark, html[data-theme="dark"]) .article.content a.link:hover,
-:is(html.dark, html[data-theme="dark"]) .article.content a.link:focus {
+:is(html.dark, html[data-theme="dark"]) main.article article.content a[href]:not(nav a):hover,
+:is(html.dark, html[data-theme="dark"]) main.article article.content a[href]:not(nav a):focus,
+:is(html.dark, html[data-theme="dark"]) article.content a[href]:not(nav a):hover,
+:is(html.dark, html[data-theme="dark"]) article.content a[href]:not(nav a):focus,
+:is(html.dark, html[data-theme="dark"]) .article.content a[href]:not(nav a):hover,
+:is(html.dark, html[data-theme="dark"]) .article.content a[href]:not(nav a):focus {
   color: #000 !important;
   background: var(--notes-dark-accent-strong) !important;
   text-decoration: none;
