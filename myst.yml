@@ -73,6 +73,7 @@ project:
         - file: 10_singular_value_decomposition/02-low-rank-approximation.ipynb
         - file: 10_singular_value_decomposition/03-best-direction.ipynb
         - file: 10_singular_value_decomposition/04-principal-components-analysis.ipynb
+        - file: 10_singular_value_decomposition/05-conclusion.ipynb
     - title: "Appendix: Mathematical Foundations"
       children:
         - file: 00_math_foundations/01-summation.ipynb
