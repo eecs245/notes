@@ -47,6 +47,7 @@ project:
         - file: 06_linear_transformations_and_projections/02-inverses.ipynb
         - file: 06_linear_transformations_and_projections/03-projecting-onto-column-space.ipynb
         - file: 06_linear_transformations_and_projections/04-complete-solution.ipynb
+          title: "Chapter 6.4: The Complete Solution to the Normal Equations"
         - file: 06_linear_transformations_and_projections/05-gram-schmidt-process.ipynb
     - title: "Chapter 7: Regression using Linear Algebra"
       children:
