@@ -42,8 +42,10 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
       - name: Build PDF
-        continue-on-error: true
-        run: python scripts/build_pdf.py
+        run: |
+          rm -f exports/notes.pdf
+          python scripts/build_pdf.py
+          test -s exports/notes.pdf
       - name: Build site
         run: python scripts/build_site.py --skip-pdf
       - name: Upload artifact
