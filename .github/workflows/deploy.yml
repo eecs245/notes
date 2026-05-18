@@ -37,6 +37,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends imagemagick latexmk pandoc texlive-fonts-recommended texlive-latex-extra texlive-xetex
       - name: Install Node dependencies
         run: npm ci
       - name: Install Python dependencies
