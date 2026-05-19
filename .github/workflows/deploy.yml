@@ -45,9 +45,11 @@ jobs:
             latexmk \
             librsvg2-bin \
             pandoc \
+            tex-gyre \
             texlive-fonts-extra \
             texlive-fonts-recommended \
             texlive-latex-extra \
+            texlive-plain-generic \
             texlive-xetex
       - name: Install Node dependencies
         run: npm ci
