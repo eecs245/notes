@@ -79,6 +79,7 @@ project:
       children:
         - file: 00_math_foundations/01-summation.ipynb
         - file: 00_math_foundations/02-derivatives.ipynb
+        - file: 00_math_foundations/03-sets-and-set-operations.ipynb
   # To autogenerate a Table of Contents, run "myst init --write-toc"
   exports:
     - format: pdf
