@@ -216,3 +216,93 @@ def projection_figure(y, basis, candidates=None, notation='o'):
                 line3(fig,p+a,p+a+b,GRAY,2)
                 line3(fig,p+a+b,p+b,GRAY,2)
     return fig
+
+def style_vector_figure(fig, height=520):
+    """Apply the plane style to 3D vector scenes without changing trace indices.
+
+    Keep scene cameras, controls, and non-vector geometry. Appended origin axes
+    do not disturb existing animation targets or subplot trace assignments.
+    """
+    import re
+
+    def math_label(text):
+        if not isinstance(text, str):
+            return text
+        # Only translate simple vector names; prose and existing math stay intact.
+        match = re.fullmatch(r'(?:<b>)?([uvwqrxe])(?:</b>)?([₀₁₂₃₄₅₆₇₈₉]*)', text)
+        if match:
+            sub = match[2].translate(str.maketrans('₀₁₂₃₄₅₆₇₈₉', '0123456789'))
+            return vector_label(match[1], sub=sub or None)
+        return text
+
+    scenes = sorted({t.scene or 'scene' for t in fig.data
+                     if t.type in ('scatter3d', 'cone', 'mesh3d')})
+    for scene_name in scenes:
+        scene = fig.layout[scene_name]
+        traces = [t for t in fig.data if getattr(t, 'scene', None) in (scene_name, None)
+                  and t.type in ('scatter3d', 'cone', 'mesh3d')]
+        values = [0.0]
+        for t in traces:
+            for axis in ('x', 'y', 'z'):
+                vals = np.asarray(getattr(t, axis), dtype=float).ravel()
+                values.extend(vals[np.isfinite(vals)].tolist())
+        for axis in ('xaxis', 'yaxis', 'zaxis'):
+            if getattr(scene, axis).range:
+                values.extend(getattr(scene, axis).range)
+        span = max(max(values) - min(values), 1.0)
+        bounds = [min(values) - 0.06*span, max(values) + 0.06*span]
+        span = bounds[1] - bounds[0]
+        for axis, name in zip(('xaxis', 'yaxis', 'zaxis'), ('x', 'y', 'z')):
+            current = getattr(scene, axis)
+            title = current.title.text
+            if title in (None, name):
+                title = f'<i>{name}</i>'
+            current.update(range=bounds, title=title, showbackground=True,
+                           backgroundcolor='white', gridcolor='#e5e7eb',
+                           zerolinecolor=GRAY, showspikes=False,
+                           tickfont=dict(family=FONT, size=12))
+        scene.update(bgcolor='white', aspectmode='cube')
+        for i, t in enumerate(fig.data):
+            if getattr(t, 'scene', None) not in (scene_name, None):
+                continue
+            if t.type == 'cone':
+                direction = np.array([t.u[0], t.v[0], t.w[0]], dtype=float)
+                length = np.linalg.norm(direction)
+                if length == 0:
+                    t.visible = False
+                    continue
+                direction /= length
+                tip = 0.035 * span
+                t.update(u=[direction[0]], v=[direction[1]], w=[direction[2]],
+                         anchor='tip', sizemode='absolute', sizeref=tip)
+                if i > 0:
+                    shaft = fig.data[i-1]
+                    if shaft.type == 'scatter3d' and shaft.mode == 'lines' and len(shaft.x) == 2:
+                        start = np.array([shaft.x[0], shaft.y[0], shaft.z[0]])
+                        end = np.array([t.x[0], t.y[0], t.z[0]])
+                        shortened = end - min(tip*0.3, np.linalg.norm(end-start)*0.1)*direction
+                        shaft.update(x=[start[0],shortened[0]], y=[start[1],shortened[1]],
+                                     z=[start[2],shortened[2]], line=dict(width=7),
+                                     hovertemplate=None, hoverinfo='skip')
+            elif t.type == 'scatter3d' and t.text is not None:
+                original = list(t.text)
+                t.text = [math_label(label) for label in original]
+                is_vector = any(a != b for a, b in zip(original, t.text))
+                t.textfont.update(family=FONT, size=20 if is_vector else (t.textfont.size or 18))
+                if is_vector and i > 0 and fig.data[i-1].type == 'cone':
+                    arrow = fig.data[i-1]
+                    t.update(x=[arrow.x[0] + 0.025*span],
+                             y=[arrow.y[0] + 0.025*span],
+                             z=[arrow.z[0] + 0.035*span])
+        # Add the same muted origin axes as in the plane plots.
+        for direction in np.eye(3):
+            p = np.array([bounds[0]*direction, bounds[1]*direction])
+            fig.add_trace(go.Scatter3d(x=p[:,0], y=p[:,1], z=p[:,2], scene=scene_name,
+                mode='lines', line=dict(color=GRAY, width=2), showlegend=False,
+                hoverinfo='skip'))
+    fig.update_layout(width=None, autosize=True, height=height,
+                      paper_bgcolor='white', plot_bgcolor='white',
+                      margin=dict(l=20, r=20, t=max(fig.layout.margin.t or 0, 35),
+                                  b=max(fig.layout.margin.b or 0, 40)),
+                      font=dict(family=FONT, size=16, color='black'))
+    return fig
