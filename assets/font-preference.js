@@ -1,7 +1,11 @@
 let initialized = false;
-function render() {
+function render({ el }) {
   if (initialized) return;
   initialized = true;
+  // MyST gives widget CSS a content-hashed URL. Apply it to the page as well
+  // as the widget so returning visitors do not reuse an old myst-theme.css.
+  const stylesheet = el.querySelector('link[rel="stylesheet"]');
+  if (stylesheet) document.head.append(stylesheet.cloneNode(true));
   const key = 'eecs245-font';
   let preference = 'default';
   const appearanceKey = 'eecs245-appearance';
