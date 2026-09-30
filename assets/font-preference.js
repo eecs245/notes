@@ -78,6 +78,15 @@ function render({ el }) {
       syncWidget(frame);
     });
   };
+  // SVG text cannot inherit the page font across an image boundary. A fragment
+  // selects the matching font inside this authored SVG without changing its palette.
+  const syncTaxonomyFont = () => {
+    document.querySelectorAll('figure.ml-taxonomy img').forEach((image) => {
+      const source = image.getAttribute('src').split('#')[0];
+      const desired = source + (preference === 'palatino' ? '#palatino' : '');
+      if (image.getAttribute('src') !== desired) image.setAttribute('src', desired);
+    });
+  };
   const apply = (value) => {
     const palatino = value === 'palatino';
     preference = palatino ? 'palatino' : 'default';
@@ -86,6 +95,7 @@ function render({ el }) {
       input.checked = palatino;
     });
     syncWidgets();
+    syncTaxonomyFont();
   };
   try { preference = localStorage.getItem(key) || 'default'; } catch { /* Use the default. */ }
 
@@ -110,6 +120,7 @@ function render({ el }) {
 
   const mount = () => {
     mountWidgets();
+    syncTaxonomyFont();
     // These chapters contain photographs/MNIST rather than categorical diagrams.
     const imageData = /\/(?:low-rank-approximation|conclusion)\/?$/.test(location.pathname);
     document.documentElement.toggleAttribute('data-notes-image-data', imageData);

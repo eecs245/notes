@@ -978,3 +978,11 @@ figure.course-caption figcaption {
 :is(html.dark, html[data-theme="dark"]) figure.course-caption figcaption {
   color: #b8b8b8;
 }
+
+/* The taxonomy SVG uses its own dark palette; keep embedded pictures intact.
+   Explicit color-scheme also makes manual appearance override the OS theme. */
+figure.ml-taxonomy img { color-scheme: light; }
+:is(html.dark, html[data-theme="dark"]) figure.ml-taxonomy img { color-scheme: dark; }
+@media print {
+  :is(html.dark, html[data-theme="dark"]) figure.ml-taxonomy img { color-scheme: light; }
+}
