@@ -103,9 +103,9 @@ site:
   parts:
     primary_sidebar_footer: ./assets/activities-toc-loader.md
   actions:
-    - title: "Download as PDF"
-      url: ./exports/notes.pdf
-    - title: "Course Website"
+    - title: "🖨️ PDF"
+      url: https://notes.eecs245.org/exports/notes.pdf
+    - title: "🧠 Course Website"
       url: https://eecs245.org
-    - title: "Feedback?"
+    - title: "🙋 Feedback"
       url: https://docs.google.com/forms/d/e/1FAIpQLSfrAu2o3eBa9ZvjerOFxqDHV63GlR9NoYdA4TOgK8BBoSguCg/viewform?usp=dialog
