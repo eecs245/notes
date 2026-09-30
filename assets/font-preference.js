@@ -57,6 +57,27 @@ function render({ el }) {
   const appearances = ['light', 'paper', 'dark'];
   let appearance = null;
   try { appearance = localStorage.getItem(appearanceKey); } catch { /* Use the current theme. */ }
+  const widgetFrames = new WeakSet();
+  const syncWidget = (frame) => {
+    const rootStyle = getComputedStyle(document.documentElement);
+    const articleStyle = getComputedStyle(document.querySelector('article') || document.body);
+    frame.contentWindow?.postMessage({
+      type: 'notes-mnist-appearance',
+      appearance: appearance || 'light',
+      font: articleStyle.fontFamily,
+      ink: articleStyle.color,
+      accent: appearance === 'dark' ? rootStyle.getPropertyValue('--notes-ink-orange').trim() || '#ffd280' : '#1d3faf',
+    }, '*'); // Sandboxed srcdoc frames have an opaque origin.
+  };
+  const syncWidgets = () => document.querySelectorAll('iframe.mnist-embed').forEach(syncWidget);
+  const mountWidgets = () => {
+    document.querySelectorAll('iframe.mnist-embed').forEach((frame) => {
+      if (widgetFrames.has(frame)) return;
+      widgetFrames.add(frame);
+      frame.addEventListener('load', () => syncWidget(frame));
+      syncWidget(frame);
+    });
+  };
   const apply = (value) => {
     const palatino = value === 'palatino';
     preference = palatino ? 'palatino' : 'default';
@@ -64,6 +85,7 @@ function render({ el }) {
     document.querySelectorAll('.font-preference-input').forEach((input) => {
       input.checked = palatino;
     });
+    syncWidgets();
   };
   try { preference = localStorage.getItem(key) || 'default'; } catch { /* Use the default. */ }
 
@@ -75,6 +97,7 @@ function render({ el }) {
     document.querySelectorAll('.appearance-preference-input').forEach((input) => {
       input.checked = input.value === appearance;
     });
+    syncWidgets();
   };
   const applyAppearance = (value) => {
     appearance = appearances.includes(value) ? value : 'light';
@@ -86,6 +109,7 @@ function render({ el }) {
   };
 
   const mount = () => {
+    mountWidgets();
     // These chapters contain photographs/MNIST rather than categorical diagrams.
     const imageData = /\/(?:low-rank-approximation|conclusion)\/?$/.test(location.pathname);
     document.documentElement.toggleAttribute('data-notes-image-data', imageData);
