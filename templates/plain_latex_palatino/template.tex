@@ -1,15 +1,15 @@
 \documentclass[11pt,oneside,openany]{book}
-\usepackage[letterpaper,margin=0.58in,top=0.68in,bottom=0.78in,headheight=15pt,headsep=12pt,footskip=20pt]{geometry}
+\usepackage[letterpaper,margin=1in,headheight=15pt,headsep=12pt,footskip=20pt]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{hyperref}
 \usepackage{datetime}
 \usepackage{graphicx}
 \usepackage{natbib}
 \usepackage{newpxtext}
-\usepackage{newpxmath}
 \usepackage[svgnames,table]{xcolor}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{newpxmath}
 \usepackage{mathtools}
 \usepackage{booktabs}
 \usepackage{array}
@@ -19,6 +19,8 @@
 \usepackage{titlesec}
 \usepackage{fancyhdr}
 \usepackage{enumitem}
+\usepackage{fvextra}
+\fvset{breaklines,breakanywhere,fontsize=\small}
 \usepackage[most]{tcolorbox}
 \bibliographystyle{abbrvnat}
 
@@ -146,6 +148,7 @@
 
 \newtcolorbox{mystseealso}[1]{
   enhanced,
+  breakable,
   boxrule=0.8pt,
   sharp corners,
   opacityback=1,
@@ -272,7 +275,7 @@
     {\color{white}\normalsize Last repo commit: \lastcommitdate\par}
   \end{tcolorbox}
   \vspace{1.1em}
-  {\color{red}\bfseries\small Note: This PDF export is experimental and is bound to have bugs, and any interactive visualizations and diagrams won't be present. If something doesn't look right, let us know at \href{mailto:rampure@umich.edu}{rampure@umich.edu}.\par}
+  {\color{red}\bfseries\small Note: This PDF export is experimental and is bound to have bugs, and interactive visualizations appear as static snapshots of their saved view. If something doesn't look right, let us know at \href{mailto:rampure@umich.edu}{rampure@umich.edu}.\par}
   \vfill
   {\Large \@author\par}
   \endgroup

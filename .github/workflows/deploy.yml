@@ -55,6 +55,8 @@ jobs:
         run: npm ci
       - name: Install Python dependencies
         run: pip install -r requirements.txt
+      - name: Install PDF snapshot browser
+        run: python -m playwright install --with-deps chromium
       - name: Build PDF
         run: |
           rm -f exports/notes.pdf

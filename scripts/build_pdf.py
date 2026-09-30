@@ -7,10 +7,14 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
+
 from datetime import datetime
 from pathlib import Path
 
 import cairosvg
+import yaml
+from pdf_figures import snapshot_notebooks
 from PIL import Image, ImageSequence
 
 
@@ -53,20 +57,6 @@ INDEX_TEX_NAME = "notes-index-frontmatter.tex"
 def run(cmd: list[str], cwd: Path = ROOT, check: bool = True) -> subprocess.CompletedProcess[str]:
     print("$", " ".join(cmd))
     return subprocess.run(cmd, cwd=cwd, text=True, check=check)
-
-
-def latest_build_dir(before: set[Path]) -> Path:
-    candidates = [
-        path
-        for path in TEMP_ROOT.glob("myst*")
-        if path.is_dir() and (path / "notes.tex").exists() and (path / "files").is_dir()
-    ]
-    new_candidates = [path for path in candidates if path.resolve() not in before]
-    if new_candidates:
-        candidates = new_candidates
-    if not candidates:
-        raise RuntimeError("Could not locate a MyST LaTeX temp directory")
-    return max(candidates, key=lambda path: path.stat().st_mtime)
 
 
 def repo_last_commit() -> str:
@@ -237,9 +227,15 @@ def transform_framed_blocks(text: str, title_kind_map: dict[str, str]) -> str:
 def replace_color_commands(text: str) -> str:
     def convert(match: re.Match[str]) -> str:
         value = match.group(1)
-        if re.fullmatch(r"#?[0-9A-Fa-f]{6}", value):
+        if re.fullmatch(r"#(?:[0-9A-Fa-f]{3}){1,2}|[0-9A-Fa-f]{6}", value):
             hex_value = value.lstrip("#").upper()
+            if len(hex_value) == 3:
+                hex_value = "".join(char * 2 for char in hex_value)
             return rf"\color[HTML]{{{hex_value}}}"
+        if value == "lightblue":
+            return r"\color{LightBlue}"
+        if value == "gold":
+            return r"\color{Gold}"
         return match.group(0)
 
     return re.sub(r"\\color\{([^}]+)\}", convert, text)
@@ -255,6 +251,16 @@ def fix_oversized_figures(text: str) -> str:
         return rf"\includegraphics[{options}]{{{path}}}"
 
     return re.sub(r"\\includegraphics\[([^\]]+)\]\{([^}]+)\}", repl, text)
+
+
+
+def center_figures(text: str) -> str:
+    """Center display images within their current text or callout width."""
+    return re.sub(
+        r"(?m)^[ \t]*(\\includegraphics(?:\[[^\]\n]*\])?\{[^}\n]+\})[ \t]*$",
+        lambda match: r"\noindent\makebox[\linewidth][c]{" + match.group(1) + "}",
+        text,
+    )
 
 
 def patch_main_tex(text: str, last_commit: str) -> str:
@@ -344,7 +350,7 @@ def build_index_tex(title_kind_map: dict[str, str]) -> str:
     text = text.replace(r"@@INDEX_SUBSUBSECTION@@{", r"\subsection{")
     text = replace_color_commands(text)
     text = fix_oversized_figures(text)
-    text = transform_framed_blocks(text, title_kind_map)
+    text = center_figures(transform_framed_blocks(text, title_kind_map))
     return (
         r"\chapter*{About These Notes}\addcontentsline{toc}{chapter}{About These Notes}" + "\n\n" + text
     )
@@ -355,6 +361,19 @@ def patch_included_tex(text: str, filename: str, title_kind_map: dict[str, str])
         text = text.replace(original, replacement)
 
     text = replace_color_commands(text)
+    # MathJax accepts blank lines and nested align*, but amsmath does not.
+    text = re.sub(
+        r"\\begin\{align\*\}(.*?)\\end\{align\*\}",
+        lambda match: match.group(0).replace("\n\n", "\n"), text, flags=re.S,
+    )
+    text = re.sub(
+        r"\\(underbrace|boxed)\{\s*\\begin\{align\*\}(.*?)\\end\{align\*\}\}",
+        lambda match: "\\" + match.group(1) + r"{\begin{aligned}" + match.group(2) + r"\end{aligned}}",
+        text, flags=re.S,
+    )
+    text = re.sub(r"(?m)^\\newline\s*$", lambda _: r"\par\medskip", text)
+    text = text.replace(r"\begin{verbatim}", r"\begin{Verbatim}")
+    text = text.replace(r"\end{verbatim}", r"\end{Verbatim}")
     text = text.replace(".gif}", ".png}")
     text = text.replace(".svg}", ".pdf}")
     text = fix_oversized_figures(text)
@@ -377,7 +396,7 @@ def patch_included_tex(text: str, filename: str, title_kind_map: dict[str, str])
         text = text.replace(r"@@SUBSECTIONSTAR@@{", r"\subsection*{")
         text = text.replace(r"@@SUBSECTION@@{", r"\subsection{")
 
-    return transform_framed_blocks(text, title_kind_map)
+    return center_figures(transform_framed_blocks(text, title_kind_map))
 
 
 def convert_assets(build_dir: Path) -> None:
@@ -412,16 +431,38 @@ def compile_pdf(build_dir: Path) -> Path:
         check=False,
     )
     pdf = build_dir / "notes.pdf"
-    if not pdf.exists():
+    if result.returncode != 0 or not pdf.exists():
         raise RuntimeError(f"PDF compile failed with exit code {result.returncode}")
     return pdf
 
 
 def main() -> int:
     TEMP_ROOT.mkdir(parents=True, exist_ok=True)
-    before = {path.resolve() for path in TEMP_ROOT.glob("myst*") if path.is_dir()}
-    subprocess.run(["npx", "myst", "build", "--pdf"], cwd=ROOT, text=True, check=False)
-    build_dir = latest_build_dir(before)
+    # Build from copies: web notebooks and their interactive outputs stay intact.
+    with tempfile.TemporaryDirectory(prefix="pdf-source-", dir=TEMP_ROOT) as temporary:
+        stage = Path(temporary)
+        shutil.copytree(ROOT, stage, dirs_exist_ok=True, ignore=shutil.ignore_patterns(
+            ".git", "_build", "node_modules", "exports", "__pycache__", ".ipynb_checkpoints"
+        ))
+        (stage / "node_modules").symlink_to(ROOT / "node_modules", target_is_directory=True)
+        config = yaml.safe_load((stage / "myst.yml").read_text())
+        def toc_files(entries):
+            for entry in entries:
+                if entry.get("file", "").endswith(".ipynb"):
+                    yield Path(entry["file"])
+                yield from toc_files(entry.get("children", []))
+        snapshot_notebooks(stage, list(toc_files(config["project"]["toc"])), ROOT / "_build/pdf-figures")
+        # Export TeX only; compile once after applying the book's formatting fixes.
+        export = config["project"]["exports"][0]
+        export["format"] = "tex"
+        export["output"] = "_build/pdf-tex/notes.tex"
+        (stage / "myst.yml").write_text(yaml.safe_dump(config, sort_keys=False))
+        run(["npx", "myst", "build", "--tex"], cwd=stage)
+        generated = stage / "_build/pdf-tex"
+        if not (generated / "notes.tex").exists():
+            raise RuntimeError("MyST did not generate the book's LaTeX source")
+        build_dir = Path(tempfile.mkdtemp(prefix="myst-pdf-", dir=TEMP_ROOT))
+        shutil.copytree(generated, build_dir, dirs_exist_ok=True)
     print("Using build directory:", build_dir)
 
     last_commit = repo_last_commit()

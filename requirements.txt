@@ -211,3 +211,6 @@ websocket-client==1.8.0
 wheel==0.45.1
 widgetsnbextension==4.0.13
 zipp==3.21.0
+
+# Browser snapshots for interactive figures in the PDF build.
+playwright==1.59.0
