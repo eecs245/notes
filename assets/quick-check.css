@@ -1,0 +1,35 @@
+/* Quick Checks have their own purple identity; solutions use the native dropdown. */
+.notes-quick-check { font-family: inherit; color: inherit; }
+.notes-quick-check p { margin: .6em 0; }
+.notes-quick-check .quick-check-vectors { text-align: center; margin: 1.2em 0; overflow-x: auto; padding: .25em 0; }
+.notes-quick-check .quick-check-answer { display: flex; align-items: baseline; gap: .8em; flex-wrap: wrap; margin: .7em 0; }
+.notes-quick-check label { display: inline-flex; align-items: center; gap: .7em; }
+.notes-quick-check input { width: 7em; max-width: 40vw; font: inherit; color: inherit; padding: .2em .5em; border: 1px solid currentColor; border-radius: 3px; background: transparent; }
+.notes-quick-check input:focus-visible, .notes-quick-check button:focus-visible, .notes-quick-check summary:focus-visible { outline: 2px solid #3d81f6; outline-offset: 3px; }
+.notes-quick-check .quick-check-actions { display: flex; gap: .7em; margin-top: 1em; flex-wrap: wrap; }
+.notes-quick-check button { font: inherit; padding: .35em .8em; border: 1px solid currentColor; border-radius: 3px; cursor: pointer; }
+.notes-quick-check .quick-check-check { background: #3d81f6; border-color: #3d81f6; color: #fff; }
+.notes-quick-check .quick-check-shuffle { background: transparent; color: inherit; }
+.notes-quick-check button:hover { filter: brightness(.94); }
+.notes-quick-check .quick-check-status:empty { display: none; }
+.notes-quick-check .quick-check-status { margin: .7em 0; }
+.notes-quick-check .quick-check-feedback { font-size: .95em; }
+.notes-quick-check .quick-check-feedback[data-correct="true"] { color: #16713c; }
+.notes-quick-check .quick-check-feedback[data-correct="false"] { color: #b03225; }
+:is(html.dark, html[data-theme="dark"]) .notes-quick-check .quick-check-feedback[data-correct="true"] { color: #83dba1; }
+:is(html.dark, html[data-theme="dark"]) .notes-quick-check .quick-check-feedback[data-correct="false"] { color: #ffb2a6; }
+@media(max-width:480px) { .notes-quick-check .quick-check-feedback { flex-basis: 100%; } }
+
+.notes-quick-check-callout { border-left-color: #9333ea; }
+.notes-quick-check-callout > .myst-admonition-header { background: #f3e8ff; color: #7e22ce; }
+.notes-quick-check-callout > .myst-admonition-header > .myst-admonition-header-icon { color: #7e22ce; }
+:is(html.dark, html[data-theme="dark"]) .notes-quick-check-callout { border-left-color: #c084fc; }
+:is(html.dark, html[data-theme="dark"]) .notes-quick-check-callout > .myst-admonition-header { background: #352344; color: #d8b4fe; }
+:is(html.dark, html[data-theme="dark"]) .notes-quick-check-callout > .myst-admonition-header > .myst-admonition-header-icon { color: #d8b4fe; }
+
+.notes-quick-check .notes-solution { border-left-color: #9333ea; }
+.notes-quick-check .notes-solution > .myst-admonition-header { background: #f3e8ff; color: #7e22ce; }
+.notes-quick-check .notes-solution > .myst-admonition-header > svg:first-child { color: #7e22ce; }
+:is(html.dark, html[data-theme="dark"]) .notes-quick-check .notes-solution { border-left-color: #c084fc; }
+:is(html.dark, html[data-theme="dark"]) .notes-quick-check .notes-solution > .myst-admonition-header { background: #352344; color: #d8b4fe; }
+:is(html.dark, html[data-theme="dark"]) .notes-quick-check .notes-solution > .myst-admonition-header > svg:first-child { color: #d8b4fe; }
