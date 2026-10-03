@@ -12,26 +12,30 @@ project:
   toc:
     - file: index.ipynb
     - file: advice.md
-    - title: "Chapter 1: Introduction to Supervised Learning"
+    - file: 01_introduction_to_supervised_learning/00-index.md
+      title: "Chapter 1: Introduction to Supervised Learning"
       children:
         - file: 01_introduction_to_supervised_learning/01-what-is-machine-learning.ipynb
         - file: 01_introduction_to_supervised_learning/02-squared-loss-constant-model.ipynb
         - file: 01_introduction_to_supervised_learning/03-absolute-loss.ipynb
         - file: 01_introduction_to_supervised_learning/04-comparing-loss-functions.ipynb
-    - title: "Chapter 2: Simple Linear Regression"
+    - file: 02_simple_linear_regression/00-index.md
+      title: "Chapter 2: Simple Linear Regression"
       children:
         - file: 02_simple_linear_regression/01-overview.ipynb
         - file: 02_simple_linear_regression/02-partial-derivatives.ipynb
         - file: 02_simple_linear_regression/03-finding-optimal-parameters.ipynb
         - file: 02_simple_linear_regression/04-correlation.ipynb
         - file: 02_simple_linear_regression/05-least-squares.ipynb
-    - title: "Chapter 3: Vectors"
+    - file: 03_vectors/00-index.md
+      title: "Chapter 3: Vectors"
       children:
         - file: 03_vectors/01-vectors-and-linear-combinations.ipynb
         - file: 03_vectors/02-norms.ipynb
         - file: 03_vectors/03-dot-product.ipynb
         - file: 03_vectors/04-projecting-onto-a-single-vector.ipynb
-    - title: "Chapter 4: Linear Independence"
+    - file: 04_linear_independence/00-index.md
+      title: "Chapter 4: Linear Independence"
       children:
         - file: 04_linear_independence/01-span.ipynb
         - file: 04_linear_independence/02-linear-independence.ipynb

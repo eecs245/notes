@@ -666,7 +666,7 @@ html[data-notes-appearance="paper"] .myst-outline-item {
    Multiplication also keeps antialiased edges smooth and gridlines visible. */
 html[data-notes-appearance="paper"] article :is(
   .js-plotly-plot, [data-name="safe-output-image"], [data-name="safe-output-svg"],
-  .course-caption .jp-RenderedSVG
+  .course-caption .jp-RenderedSVG, .notes-diagram img
 ) {
   mix-blend-mode: multiply;
 }
@@ -764,9 +764,16 @@ html[data-notes-appearance="paper"] article .notes-original-colors {
    keeps raster plots, 3D shading, labels, and slider redraws in agreement. */
 :is(html.dark, html[data-theme="dark"]) article :is(
   .js-plotly-plot, [data-name="safe-output-image"], [data-name="safe-output-svg"],
-  .course-caption .jp-RenderedSVG
+  .course-caption .jp-RenderedSVG, .notes-diagram img
 ) {
   filter: url(#notes-dark-diagram-colors);
+}
+
+/* Screen a zeroed background onto the page so authored PNG diagrams also
+   match warm dark-paper tones exactly. */
+:is(html.dark, html[data-theme="dark"]) article .notes-diagram img[src] {
+  filter: url(#notes-dark-diagram-colors) contrast(1.25);
+  mix-blend-mode: screen;
 }
 
 /* Photographs and image-valued data must retain their actual pixel values. */
