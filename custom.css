@@ -678,42 +678,53 @@ html[data-notes-appearance="paper"] article .notes-original-colors {
   mix-blend-mode: normal;
 }
 
-/* Shared dark reading palette. Diagram pixels and authored text use the same
-   50% white / 50% source-color mapping, without modifying notebook content.
-   The SVG filter lives in font-preference.js and also covers WebGL canvases. */
+/* Semantic text and math colors. Light and paper share a palette; normal
+   text, backgrounds, and the separate diagram filter are unchanged.
+   Keep legacy authored colors in notebooks and map them at render time. */
+:root {
+  --notes-ink-blue: #0A55D6;
+  --notes-ink-orange: #A74C02;
+  --notes-ink-red: #BA1753;
+  --notes-ink-green: #117356;
+  --notes-ink-pink: var(--notes-ink-red);
+}
 :is(html.dark, html[data-theme="dark"]) {
-  --notes-ink-blue: #9ec0fa;
-  --notes-ink-green: #80a6a0;
-  --notes-ink-pink: #ec8db0;
+  --notes-ink-blue: #3d81f6;
+  --notes-ink-green: #1fd19b;
+  --notes-ink-red: #eb4783;
   --notes-ink-purple: #c080c0;
-  --notes-ink-orange: #ffd280;
+  --notes-ink-orange: #ffa500;
   --notes-ink-dark-orange: #ffc680;
   --notes-ink-gold: #ffeb80;
   --notes-ink-light-blue: #d6ecf2;
 }
 
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:#3d81f6" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: #3d81f6" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:rgb(61, 129, 246)" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: rgb(61, 129, 246)" i] {
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:#3d81f6" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: #3d81f6" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:rgb(61, 129, 246)" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: rgb(61, 129, 246)" i],
+article mstyle:not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[mathcolor="#3d81f6" i] {
   color: var(--notes-ink-blue) !important;
 }
 
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:#004d40" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: #004d40" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:rgb(0, 77, 64)" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: rgb(0, 77, 64)" i] {
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:#004d40" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: #004d40" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:rgb(0, 77, 64)" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: rgb(0, 77, 64)" i],
+article mstyle:not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[mathcolor="#004d40" i] {
   color: var(--notes-ink-green) !important;
 }
 
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:#d81b60" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: #d81b60" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:#d81a60" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: #d81a60" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:rgb(216, 27, 96)" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: rgb(216, 27, 96)" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:rgb(216, 26, 96)" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: rgb(216, 26, 96)" i] {
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:#d81b60" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: #d81b60" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:#d81a60" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: #d81a60" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:rgb(216, 27, 96)" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: rgb(216, 27, 96)" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:rgb(216, 26, 96)" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: rgb(216, 26, 96)" i],
+article mstyle:not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[mathcolor="#d81b60" i],
+article mstyle:not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[mathcolor="#d81a60" i] {
   color: var(--notes-ink-pink) !important;
 }
 
@@ -726,12 +737,14 @@ html[data-notes-appearance="paper"] article .notes-original-colors {
   color: var(--notes-ink-purple) !important;
 }
 
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:orange" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: orange" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:#ffa500" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: #ffa500" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:rgb(255, 165, 0)" i],
-:is(html.dark, html[data-theme="dark"]) article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: rgb(255, 165, 0)" i] {
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:orange" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: orange" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:#ffa500" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: #ffa500" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color:rgb(255, 165, 0)" i],
+article :is(span, mstyle):not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[style*="color: rgb(255, 165, 0)" i],
+article mstyle:not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[mathcolor="orange" i],
+article mstyle:not(.js-plotly-plot *, [data-name="safe-output-svg"] *)[mathcolor="#ffa500" i] {
   color: var(--notes-ink-orange) !important;
 }
 
