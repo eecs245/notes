@@ -92,7 +92,7 @@ project:
       template: ./templates/plain_latex_palatino
       output: exports/notes.pdf
 site:
-  template: book-theme
+  template: https://github.com/jupyter-book/myst-theme/releases/download/myst-to-react%401.4.1/book-theme.zip
   options:
     style: ./custom.css
     scripts:
