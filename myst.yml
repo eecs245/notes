@@ -41,13 +41,15 @@ project:
         - file: 04_linear_independence/02-linear-independence.ipynb
         - file: 04_linear_independence/03-vector-spaces-basis-dimension.ipynb
         - file: 04_linear_independence/04-lines-planes-hyperplanes.ipynb
-    - title: "Chapter 5: Matrices"
+    - file: 05_matrices/00-index.md
+      title: "Chapter 5: Matrices"
       children:
         - file: 05_matrices/01-matrix-operations.ipynb
         - file: 05_matrices/02-special-matrices.ipynb
         - file: 05_matrices/03-rank-and-column-space.ipynb
         - file: 05_matrices/04-null-space-rank-nullity.ipynb
-    - title: "Chapter 6: Linear Transformations and Projections"
+    - file: 06_linear_transformations_and_projections/00-index.md
+      title: "Chapter 6: Linear Transformations and Projections"
       children:
         - file: 06_linear_transformations_and_projections/01-linear-transformations.ipynb
         - file: 06_linear_transformations_and_projections/02-inverses.ipynb
@@ -55,11 +57,13 @@ project:
         - file: 06_linear_transformations_and_projections/04-complete-solution.ipynb
           title: "6.4. The Complete Solution to the Normal Equations"
         - file: 06_linear_transformations_and_projections/05-gram-schmidt-process.ipynb
-    - title: "Chapter 7: Regression using Linear Algebra"
+    - file: 07_regression_using_linear_algebra/00-index.md
+      title: "Chapter 7: Regression using Linear Algebra"
       children:
         - file: 07_regression_using_linear_algebra/01-regression-using-linear-algebra.ipynb
         - file: 07_regression_using_linear_algebra/02-multiple-linear-regression.ipynb
-    - title: "Chapter 8: Gradients"
+    - file: 08_gradients/00-index.md
+      title: "Chapter 8: Gradients"
       children:
         - file: 08_gradients/01-gradient-vector.ipynb
         - file: 08_gradients/02-gradients-matrix-vector-operations.ipynb
